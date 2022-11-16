@@ -13,7 +13,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public PriceCategories PriceCategory { get; set; }
-        public double AvgFuelConsumption { get; set; }
+        public float AvgFuelConsumption { get; set; }
         public int RentalPlaceId { get; set; }
     }
 }
