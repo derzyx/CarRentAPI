@@ -10,8 +10,6 @@ namespace CarRentAPI.Data
 
         //}
 
-
-
         public DbSet<RentalPlace> RentalPlaces { get; set; }
         public DbSet<Car> Cars { get; set; }
 

@@ -3,7 +3,7 @@ using CarRentAPI.Models;
 
 namespace CarRentAPI.Repository
 {
-    public class CarRepository: ICarRepository
+    public class CarRepository: IGenericBasicRepository<Car>
     {
         private CarRentDbContext context;
 

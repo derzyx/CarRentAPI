@@ -29,26 +29,9 @@ namespace CarRentAPI.Controllers
         //    carRepository = _carRepository;
         //    rentPlaceRepository = _rentPlaceRepository;
         //}
+        
 
-
-        [HttpGet("AllCars")]
-        public ActionResult<IEnumerable<Car>> GetAllCars()
-        {
-            return unitOfWork.CarRepository.GetAll().ToList();
-        }
-
-        [HttpPost("AddCar")]
-        public ActionResult<Car> AddCar([FromQuery] Car car)
-        {
-            if (car == null) return BadRequest();
-
-            unitOfWork.CarRepository.Insert(car);
-            unitOfWork.Save();
-
-            return Ok(car);
-        }
-
-        [HttpGet("RentList")]
+        [HttpGet("GetList")]
         public ActionResult<List<RentDetails>> CarsToRent([FromQuery] UserInput input)
         {
             var cars = unitOfWork.CarRepository.GetAll().ToList();
@@ -84,10 +67,10 @@ namespace CarRentAPI.Controllers
             return carsToRent;
         }
 
-        [HttpPost("CarReservation")]
-        public void AddReservation()
-        {
+        //[HttpPost("CarReservation")]
+        //public void AddReservation()
+        //{
 
-        }
+        //}
     }
 }

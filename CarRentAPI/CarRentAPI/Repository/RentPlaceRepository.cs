@@ -3,7 +3,7 @@ using CarRentAPI.Models;
 
 namespace CarRentAPI.Repository
 {
-    public class RentPlaceRepository : IRentPlaceRepository
+    public class RentPlaceRepository : IGenericBasicRepository<RentalPlace>, IRentPlaceRepository
     {
         private CarRentDbContext context;
         public RentPlaceRepository()
