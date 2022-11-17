@@ -40,12 +40,5 @@ namespace CarRentAPI.Repository
         {
             context.Cars.Remove(carId);
         }
-
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
-        
     }
 }

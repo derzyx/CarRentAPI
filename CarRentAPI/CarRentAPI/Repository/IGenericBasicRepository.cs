@@ -9,6 +9,5 @@ namespace CarRentAPI.Repository
         void Insert(T car);
         void Update(T car);
         void Delete(T carId);
-        void Save();
     }
 }

@@ -41,7 +41,7 @@ namespace CarRentAPI.Controllers
             {
                 var rentPlace = unitOfWork.RentPlaceRepository.GetCarRentPlace(car.Id);
 
-                var drivingExperiance = DateTime.Today.Year - input.DriverLicenseYear;
+                var drivingExperiance = (DateTime.Today - input.DriverLicenseYear).Days/365;
                 var rentDays = input.DateTo.Subtract(input.DateFrom).Days;
                 var priceMultiplier = priceMultipliers[(int)car.PriceCategory];
                 var isPremium = car.PriceCategory == PriceCategories.Premium ? true : false;

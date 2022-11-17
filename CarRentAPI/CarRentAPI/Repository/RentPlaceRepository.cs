@@ -16,8 +16,6 @@ namespace CarRentAPI.Repository
             context = _context;
         }
 
-        
-
         public IEnumerable<RentalPlace> GetAll()
         {
             return context.RentalPlaces.ToList();
@@ -43,14 +41,10 @@ namespace CarRentAPI.Repository
             context.RentalPlaces.Remove(rentalPlaceId);
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         public RentalPlace GetCarRentPlace(int carId)
         {
-            return context.RentalPlaces.Where(place => place.Id == carId).FirstOrDefault();
+            int carRentPlaceId = context.Cars.Where(car => car.Id == carId).FirstOrDefault().RentalPlaceId;
+            return context.RentalPlaces.Where(place => place.Id == carRentPlaceId).FirstOrDefault();
         }
     }
 }
