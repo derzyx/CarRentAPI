@@ -15,35 +15,35 @@ namespace CarRentAPI.Controllers
         private float newDriverFee = 1.2f;
         private float smallCarNumberFee = 1.15f;
 
-
-        private ICarRepository carRepository;
-        private IRentPlaceRepository rentPlaceRepository;
-        public RentCarsController()
-        {
-            carRepository = new CarRepository(new CarRentDbContext());
-            rentPlaceRepository = new RentPlaceRepository(new CarRentDbContext());
-        }
-        public RentCarsController(ICarRepository _carRepository, IRentPlaceRepository _rentPlaceRepository)
-        {
-            carRepository = _carRepository;
-            rentPlaceRepository = _rentPlaceRepository;
-        }
+        private UnitOfWork unitOfWork = new UnitOfWork();
+        //private ICarRepository carRepository;
+        //private IRentPlaceRepository rentPlaceRepository;
+        //public RentCarsController()
+        //{
+        //    carRepository = new CarRepository(new CarRentDbContext());
+        //    rentPlaceRepository = new RentPlaceRepository(new CarRentDbContext());
+        //}
+        //public RentCarsController(ICarRepository _carRepository, IRentPlaceRepository _rentPlaceRepository)
+        //{
+        //    carRepository = _carRepository;
+        //    rentPlaceRepository = _rentPlaceRepository;
+        //}
 
         [HttpGet("AllCars")]
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
-            return carRepository.GetAll().ToList();
+            return unitOfWork.CarRepository.GetAll().ToList();
         }
 
         [HttpGet("RentList")]
         public ActionResult<List<RentDetails>> CarsToRent([FromQuery] UserInput input)
         {
-            var cars = carRepository.GetAll().ToList();
+            var cars = unitOfWork.CarRepository.GetAll().ToList();
             List<RentDetails> carsToRent = new List<RentDetails>();
 
             foreach (Car car in cars)
             {
-                var rentPlace = rentPlaceRepository.GetCarRentPlace(car.Id);
+                var rentPlace = unitOfWork.RentPlaceRepository.GetCarRentPlace(car.Id);
 
                 var drivingExperiance = DateTime.Today.Year - input.DriverLicenseYear;
                 var rentDays = input.DateTo.Subtract(input.DateFrom).Days;
