@@ -15,7 +15,8 @@ namespace CarRentAPI.Controllers
         private float newDriverFee = 1.2f;
         private float smallCarNumberFee = 1.15f;
 
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
+
         //private ICarRepository carRepository;
         //private IRentPlaceRepository rentPlaceRepository;
         //public RentCarsController()
@@ -29,10 +30,22 @@ namespace CarRentAPI.Controllers
         //    rentPlaceRepository = _rentPlaceRepository;
         //}
 
+
         [HttpGet("AllCars")]
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
             return unitOfWork.CarRepository.GetAll().ToList();
+        }
+
+        [HttpPost("AddCar")]
+        public ActionResult<Car> AddCar([FromQuery] Car car)
+        {
+            if (car == null) return BadRequest();
+
+            unitOfWork.CarRepository.Insert(car);
+            unitOfWork.Save();
+
+            return Ok(car);
         }
 
         [HttpGet("RentList")]

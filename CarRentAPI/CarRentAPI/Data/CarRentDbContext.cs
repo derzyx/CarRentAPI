@@ -15,6 +15,11 @@ namespace CarRentAPI.Data
         public DbSet<RentalPlace> RentalPlaces { get; set; }
         public DbSet<Car> Cars { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;Database=CarRentCalcDb;Trusted_Connection=true");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RentalPlace>().HasData(

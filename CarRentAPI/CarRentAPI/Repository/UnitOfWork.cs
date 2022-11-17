@@ -4,9 +4,14 @@ namespace CarRentAPI.Repository
 {
     public class UnitOfWork
     {
-        private CarRentDbContext context = new CarRentDbContext();
+        private CarRentDbContext context;
         private CarRepository carRepository;
         private RentPlaceRepository rentPlaceRepository;
+
+        public UnitOfWork(CarRentDbContext _context)
+        {
+            context = _context;
+        }
 
         public CarRepository CarRepository
         {
