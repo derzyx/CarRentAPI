@@ -1,5 +1,6 @@
 ﻿using CarRentAPI.Data;
 using CarRentAPI.Models;
+using CarRentAPI.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,27 +15,35 @@ namespace CarRentAPI.Controllers
         private float newDriverFee = 1.2f;
         private float smallCarNumberFee = 1.15f;
 
-        private readonly CarRentDbContext context;
-        public RentCarsController(CarRentDbContext _context)
+
+        private ICarRepository carRepository;
+        private IRentPlaceRepository rentPlaceRepository;
+        public RentCarsController()
         {
-            context = _context;
+            carRepository = new CarRepository(new CarRentDbContext());
+            rentPlaceRepository = new RentPlaceRepository(new CarRentDbContext());
+        }
+        public RentCarsController(ICarRepository _carRepository, IRentPlaceRepository _rentPlaceRepository)
+        {
+            carRepository = _carRepository;
+            rentPlaceRepository = _rentPlaceRepository;
         }
 
         [HttpGet("AllCars")]
-        public ActionResult<List<Car>> GetAllCars()
+        public ActionResult<IEnumerable<Car>> GetAllCars()
         {
-            return context.Cars.ToList();
+            return carRepository.GetAll().ToList();
         }
 
-        [HttpGet("Rent")]
+        [HttpGet("RentList")]
         public ActionResult<List<RentDetails>> CarsToRent([FromQuery] UserInput input)
         {
-            var cars = context.Cars.ToList();
+            var cars = carRepository.GetAll().ToList();
             List<RentDetails> carsToRent = new List<RentDetails>();
 
             foreach (Car car in cars)
             {
-                var rentPlace = context.RentalPlaces.Where(place => place.Id == car.RentalPlaceId).First();
+                var rentPlace = rentPlaceRepository.GetCarRentPlace(car.Id);
 
                 var drivingExperiance = DateTime.Today.Year - input.DriverLicenseYear;
                 var rentDays = input.DateTo.Subtract(input.DateFrom).Days;
@@ -60,6 +69,12 @@ namespace CarRentAPI.Controllers
             }
 
             return carsToRent;
+        }
+
+        [HttpPost("CarReservation")]
+        public void AddReservation()
+        {
+
         }
     }
 }
