@@ -5,13 +5,14 @@ namespace CarRentAPI.Data
 {
     public class CarRentDbContext: DbContext
     {
-        public CarRentDbContext(DbContextOptions options) : base(options)
-        {
-
-        }
 
         public DbSet<RentalPlace> RentalPlaces { get; set; }
         public DbSet<Car> Cars { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;Database=CarRentCalcDb;Trusted_Connection=true");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

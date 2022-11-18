@@ -1,4 +1,6 @@
-﻿namespace CarRentAPI.Models
+﻿using Microsoft.OpenApi.Extensions;
+
+namespace CarRentAPI.Models
 {
     public enum PriceCategories
     {
@@ -13,6 +15,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public PriceCategories PriceCategory { get; set; }
+        public string PriceCatName => PriceCategory.GetDisplayName();
         public float AvgFuelConsumption { get; set; }
         public int RentalPlaceId { get; set; }
     }

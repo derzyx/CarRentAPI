@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj": {}
+    "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj": {
+    "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj",
+        "projectUniqueName": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj",
         "projectName": "CarRentAPI",
-        "projectPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj",
+        "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI\\CarRentAPI.csproj",
         "packagesPath": "C:\\Users\\mkrau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI\\obj\\",
+        "outputPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mkrau\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,16 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -65,7 +75,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -77,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
