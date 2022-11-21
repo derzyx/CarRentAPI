@@ -67,10 +67,15 @@ namespace CarRentAPI.Controllers
             return carsToRent;
         }
 
-        //[HttpPost("CarReservation")]
-        //public void AddReservation()
-        //{
+        [HttpPost("CarReservation")]
+        public void AddReservation([FromQuery] Reservation reservation)
+        {
+            if (!unitOfWork.ValidationRepository.IsEmailValid(reservation.Email))
+            {
+                return BadRequest("Invalid email address");
+            }
 
-        //}
+            unitOfWork.ReservationRepository.Insert(reservation);
+        }
     }
 }

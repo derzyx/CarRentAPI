@@ -8,6 +8,7 @@ namespace CarRentAPI.Data
 
         public DbSet<RentalPlace> RentalPlaces { get; set; }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

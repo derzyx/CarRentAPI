@@ -7,6 +7,9 @@ namespace CarRentAPI.Repository
         private CarRentDbContext context;
         private CarRepository carRepository;
         private RentPlaceRepository rentPlaceRepository;
+        private ReservationRepozytory reservationRepository;
+
+        private ValidationRepository validationRepository;
 
         public UnitOfWork(CarRentDbContext _context)
         {
@@ -34,6 +37,30 @@ namespace CarRentAPI.Repository
                     rentPlaceRepository = new RentPlaceRepository(context);
                 }
                 return rentPlaceRepository;
+            }
+        }
+
+        public ReservationRepozytory ReservationRepository
+        {
+            get
+            {
+                if(reservationRepository == null)
+                {
+                    reservationRepository = new ReservationRepozytory(context);
+                }
+                return reservationRepository;
+            }
+        }
+
+        public ValidationRepository ValidationRepository
+        {
+            get
+            {
+                if(validationRepository == null)
+                {
+                    validationRepository = new ValidationRepository();
+                }
+                return validationRepository;
             }
         }
 
