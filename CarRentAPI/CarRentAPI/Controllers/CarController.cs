@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/cars")]
     [ApiController]
     public class CarController : ControllerBase
     {
         private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
 
-        [HttpGet("All")]
+        [HttpGet("all")]
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
             return unitOfWork.CarRepository.GetAll().ToList();
         }
 
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public ActionResult<Car> AddCar([FromQuery] Car car)
         {
             if (car == null) return BadRequest();

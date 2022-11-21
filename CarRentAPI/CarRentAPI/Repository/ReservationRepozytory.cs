@@ -41,5 +41,10 @@ namespace CarRentAPI.Repository
         {
             context.Entry(reservation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
+
+        public Reservation GetByCarId(int carId)
+        {
+            return context.Reservations.Where(res => res.ReservedCar.Id == carId).FirstOrDefault();
+        }
     }
 }

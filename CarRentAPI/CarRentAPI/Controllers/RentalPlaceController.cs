@@ -6,19 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/rentalplaces")]
     [ApiController]
     public class RentalPlaceController : ControllerBase
     {
         private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
 
-        [HttpGet("All")]
+        [HttpGet("all")]
         public ActionResult<IEnumerable<RentalPlace>> GetAllCars()
         {
             return unitOfWork.RentPlaceRepository.GetAll().ToList();
         }
 
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public ActionResult<RentalPlace> AddCar([FromQuery] RentalPlace rentalPlace)
         {
             if (rentalPlace == null) return BadRequest();
@@ -29,7 +29,7 @@ namespace CarRentAPI.Controllers
             return Ok(rentalPlace);
         }
 
-        [HttpGet("GetCarRentalPlace")]
+        [HttpGet("carrentalplace")]
         public ActionResult<RentalPlace> GetCarRentalPlace(int carId)
         {
             if (carId <= 0) return BadRequest("Invalid car id");

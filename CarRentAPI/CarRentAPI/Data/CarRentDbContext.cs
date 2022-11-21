@@ -40,6 +40,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Premium,
                     AvgFuelConsumption = 13.5f,
                     RentalPlaceId = 1,
+                    IsReserved = false
                 },
                 new Car
                 {
@@ -48,6 +49,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Medium,
                     AvgFuelConsumption = 10.7f,
                     RentalPlaceId = 1,
+                    IsReserved = false
                 },
                 new Car
                 {
@@ -56,6 +58,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Standard,
                     AvgFuelConsumption = 9.1f,
                     RentalPlaceId = 1,
+                    IsReserved = false
                 },
                 new Car
                 {
@@ -64,6 +67,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Premium,
                     AvgFuelConsumption = 17.2f,
                     RentalPlaceId = 2,
+                    IsReserved = false
                 },
                 new Car
                 {
@@ -72,6 +76,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Basic,
                     AvgFuelConsumption = 9.7f,
                     RentalPlaceId = 2,
+                    IsReserved = false
                 },
                 new Car
                 {
@@ -80,6 +85,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Standard,
                     AvgFuelConsumption = 9.1f,
                     RentalPlaceId = 2,
+                    IsReserved = false
                 },
                 new Car
                 {
@@ -88,6 +94,7 @@ namespace CarRentAPI.Data
                     PriceCategory = PriceCategories.Medium,
                     AvgFuelConsumption = 11.2f,
                     RentalPlaceId = 2,
+                    IsReserved = false
                 }
             );
         }

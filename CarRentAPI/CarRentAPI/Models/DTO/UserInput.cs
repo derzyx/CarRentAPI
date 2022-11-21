@@ -1,4 +1,4 @@
-﻿namespace CarRentAPI.Models
+﻿namespace CarRentAPI.Models.DTO
 {
     public class UserInput
     {

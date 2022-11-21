@@ -18,5 +18,6 @@ namespace CarRentAPI.Models
         public string PriceCatName => PriceCategory.GetDisplayName();
         public float AvgFuelConsumption { get; set; }
         public int RentalPlaceId { get; set; }
+        public bool IsReserved { get; set; }
     }
 }

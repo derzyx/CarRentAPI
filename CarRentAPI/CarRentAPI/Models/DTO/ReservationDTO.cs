@@ -1,12 +1,10 @@
-﻿namespace CarRentAPI.Models
+﻿namespace CarRentAPI.Models.DTO
 {
-    public class Reservation
+    public class ReservationDTO
     {
-        public int Id { get; set; }
-        public Car ReservedCar { get; set; }
+        public int CarId { get; set; }
         public string Email { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
-
     }
 }

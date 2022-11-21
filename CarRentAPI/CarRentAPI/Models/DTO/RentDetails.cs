@@ -1,4 +1,4 @@
-﻿namespace CarRentAPI.Models
+﻿namespace CarRentAPI.Models.DTO
 {
     public class RentDetails
     {
@@ -7,6 +7,8 @@
         public float EndPrice { get; set; }
         public float FuelPrice { get; set; }
         public float NetPrice => EndPrice * (1 - 0.23f);
-        public string CanRent { get; set; }
+        public bool CanRent { get; set; }
+        public string CanRentMessage { get; set; }
+        public DateTime? ReservedUntil { get; set; }
     }
 }
