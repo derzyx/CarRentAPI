@@ -10,7 +10,7 @@ namespace CarRentAPI.Repository
         private ReservationRepozytory reservationRepository;
 
         private ValidationRepository validationRepository;
-
+        private EmailRepository emailRepository;
         public UnitOfWork(CarRentDbContext _context)
         {
             context = _context;
@@ -61,6 +61,18 @@ namespace CarRentAPI.Repository
                     validationRepository = new ValidationRepository();
                 }
                 return validationRepository;
+            }
+        }
+
+        public EmailRepository EmailRepository
+        {
+            get
+            {
+                if(emailRepository == null)
+                {
+                    emailRepository = new EmailRepository();
+                }
+                return emailRepository;
             }
         }
 

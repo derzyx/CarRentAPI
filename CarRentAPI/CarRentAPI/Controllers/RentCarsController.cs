@@ -115,9 +115,16 @@ namespace CarRentAPI.Controllers
                 DateTo = reservation.DateTo
             };
 
-            unitOfWork.ReservationRepository.Insert(newReservation);
-            unitOfWork.CarRepository.Update(car);
-            unitOfWork.Save();
+            //unitOfWork.ReservationRepository.Insert(newReservation);
+            //unitOfWork.CarRepository.Update(car);
+            //unitOfWork.Save();
+
+            var body = $"Dziękujemy za rezerwację auta. " +
+                       $"Szczegóły:" +
+                       $"Model: {newReservation.ReservedCar.Name}" +
+                       $"Data wypożyczenia: {newReservation.DateFrom} - {newReservation.DateTo}";
+
+            unitOfWork.EmailRepository.SendEmail(newReservation.Email, "Rezerwacja auta", newReservation);
 
             return Ok(newReservation);
         }
