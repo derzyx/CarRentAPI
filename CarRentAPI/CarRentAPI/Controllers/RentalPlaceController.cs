@@ -1,8 +1,9 @@
-﻿using CarRentAPI.Data;
-using CarRentAPI.Models;
+﻿using CarRentAPI.Domain.Entities;
+using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRentAPI.Controllers
 {
@@ -10,7 +11,16 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class RentalPlaceController : ControllerBase
     {
-        private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
+
+        private DbContextOptions<CarRentDbContext> configuration;
+        private UnitOfWork unitOfWork;
+        public RentalPlaceController(DbContextOptions<CarRentDbContext> _configuration)
+        {
+            configuration = _configuration;
+            unitOfWork = new UnitOfWork(new CarRentDbContext(configuration));
+        }
+
+        //private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
 
         [HttpGet("all")]
         public ActionResult<IEnumerable<RentalPlace>> GetAllCars()

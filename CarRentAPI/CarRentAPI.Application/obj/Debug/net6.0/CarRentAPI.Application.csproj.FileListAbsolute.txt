@@ -1,0 +1,5 @@
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.csproj.AssemblyReference.cache
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.AssemblyInfoInputs.cache
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.AssemblyInfo.cs
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.csproj.CoreCompileInputs.cache

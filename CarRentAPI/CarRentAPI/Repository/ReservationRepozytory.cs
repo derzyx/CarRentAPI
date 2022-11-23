@@ -1,5 +1,6 @@
-﻿using CarRentAPI.Data;
-using CarRentAPI.Models;
+﻿using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Interfaces;
 
 namespace CarRentAPI.Repository
 {
@@ -7,10 +8,6 @@ namespace CarRentAPI.Repository
     {
         private CarRentDbContext context;
 
-        public ReservationRepozytory()
-        {
-            context = new CarRentDbContext();
-        }
 
         public ReservationRepozytory(CarRentDbContext _context)
         {
@@ -19,7 +16,7 @@ namespace CarRentAPI.Repository
 
         public void Delete(Reservation reservationId)
         {
-            context.Remove(reservationId);
+            context.Reservations.Remove(reservationId);
         }
 
         public IEnumerable<Reservation> GetAll()
@@ -39,7 +36,8 @@ namespace CarRentAPI.Repository
 
         public void Update(Reservation reservation)
         {
-            context.Entry(reservation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.Reservations.Update(reservation);
+            //context.Entry(reservation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
 
         public Reservation GetByCarId(int carId)

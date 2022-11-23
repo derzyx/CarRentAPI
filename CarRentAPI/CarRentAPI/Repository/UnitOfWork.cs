@@ -1,4 +1,4 @@
-﻿using CarRentAPI.Data;
+﻿using CarRentAPI.Infrastructure.DbData;
 
 namespace CarRentAPI.Repository
 {

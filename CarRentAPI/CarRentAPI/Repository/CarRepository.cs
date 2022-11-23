@@ -1,16 +1,14 @@
-﻿using CarRentAPI.Data;
-using CarRentAPI.Models;
+﻿using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Interfaces;
 
 namespace CarRentAPI.Repository
 {
     public class CarRepository: IGenericBasicRepository<Car>
     {
+
         private CarRentDbContext context;
 
-        public CarRepository()
-        {
-            context = new CarRentDbContext();
-        }
         public CarRepository(CarRentDbContext _context)
         {
             context = _context;
@@ -33,12 +31,14 @@ namespace CarRentAPI.Repository
 
         public void Update(Car car)
         {
-            context.Entry(car).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.Cars.Update(car);
+            //context.Entry(car).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
 
         public void Delete(Car carId)
         {
             context.Cars.Remove(carId);
         }
+
     }
 }

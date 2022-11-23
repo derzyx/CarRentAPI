@@ -1,9 +1,11 @@
-﻿using CarRentAPI.Data;
-using CarRentAPI.Models;
-using CarRentAPI.Models.DTO;
+﻿
 using CarRentAPI.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Domain.Entities.DTO;
+using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRentAPI.Controllers
 {
@@ -20,7 +22,15 @@ namespace CarRentAPI.Controllers
         private string cantRentPremiumMsg = "You cant rent premiun cars yet";
         private string isReservedMsg = "This car is reserved, you cant rent it";
 
-        private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
+        private DbContextOptions<CarRentDbContext> configuration;
+        private UnitOfWork unitOfWork;
+        public RentCarsController(DbContextOptions<CarRentDbContext> _configuration)
+        {
+            configuration = _configuration;
+            unitOfWork = new UnitOfWork(new CarRentDbContext(configuration));
+        }
+
+        //private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
 
         //private ICarRepository carRepository;
         //private IRentPlaceRepository rentPlaceRepository;
@@ -34,7 +44,7 @@ namespace CarRentAPI.Controllers
         //    carRepository = _carRepository;
         //    rentPlaceRepository = _rentPlaceRepository;
         //}
-        
+
 
         //user enters input data in form (date span, estimated range)
         //server returns CarsToRent
@@ -43,19 +53,20 @@ namespace CarRentAPI.Controllers
 
 
         [HttpGet("getlist")]
-        public ActionResult<List<RentDetails>> CarsToRent([FromQuery] UserInput input)
+        public ActionResult<List<RentDetailsDTO>> CarsToRent([FromQuery] UserInputDTO input)
         {
-            string rentMsg = "";
 
             var cars = unitOfWork.CarRepository.GetAll().ToList();
-            List<RentDetails> carsToRent = new List<RentDetails>();
+            List<RentDetailsDTO> carsToRent = new List<RentDetailsDTO>();
 
             foreach (Car car in cars)
             {
                 DateTime? reservedUntil = null;
+
+                string rentMsg = "";
                 var rentPlace = unitOfWork.RentPlaceRepository.GetCarRentPlace(car.Id);
 
-                var drivingExperiance = (DateTime.Today - input.DriverLicenseYear).Days/365;
+                var drivingExperiance = (DateTime.Today - input.DriverLicenseYear).Days / 365;
                 var rentDays = input.DateTo.Subtract(input.DateFrom).Days;
                 var priceMultiplier = priceMultipliers[(int)car.PriceCategory];
                 var isPremium = car.PriceCategory == PriceCategories.Premium ? true : false;
@@ -74,7 +85,7 @@ namespace CarRentAPI.Controllers
                 if (drivingExperiance < 3 && isPremium) rentMsg = cantRentPremiumMsg;
                 if (!(drivingExperiance < 3 && isPremium) && !car.IsReserved) rentMsg = canRentMsg;
 
-                RentDetails details = new RentDetails
+                RentDetailsDTO details = new RentDetailsDTO
                 {
                     Car = car,
                     Location = rentPlace.City,
@@ -82,7 +93,9 @@ namespace CarRentAPI.Controllers
                     FuelPrice = fuelCost,
                     CanRent = (drivingExperiance < 3 && isPremium) || car.IsReserved ? false : true,
                     CanRentMessage = rentMsg,
-                    ReservedUntil = reservedUntil
+                    ReservedUntil = reservedUntil,
+                    UserDateFrom = input.DateFrom,
+                    UserDateTo = input.DateTo
                 };
 
                 carsToRent.Add(details);
@@ -91,18 +104,18 @@ namespace CarRentAPI.Controllers
             return carsToRent;
         }
 
-        [HttpPost("addreservation")]
-        public ActionResult AddReservation([FromQuery] ReservationDTO reservation)
+        [HttpPost("addreservation/{email}")]
+        public ActionResult AddReservation(string email, RentDetailsDTO resDetails)
         {
-            var isEmailValid = unitOfWork.ValidationRepository.IsEmailValid(reservation.Email);
+            var isEmailValid = unitOfWork.ValidationRepository.IsEmailValid(email);
             if (!isEmailValid) return BadRequest("Invalid email address");
 
-            var isDateSpanValid = unitOfWork.ValidationRepository.IsDateSpanValid(reservation.DateFrom, reservation.DateTo);
+            var isDateSpanValid = unitOfWork.ValidationRepository.IsDateSpanValid(resDetails.UserDateFrom, resDetails.UserDateTo);
             if (!isDateSpanValid.IsValid) return BadRequest(isDateSpanValid.Message);
 
-            var car = unitOfWork.CarRepository.GetById(reservation.CarId);
+            var car = resDetails.Car;
             if (car == null) return BadRequest("Invalid car id");
-            if (car.IsReserved) return BadRequest("This car is already reserved");
+            if (!resDetails.CanRent) return BadRequest("This car is already reserved");
 
             car.IsReserved = true;
 
@@ -110,21 +123,16 @@ namespace CarRentAPI.Controllers
             {
                 Id = 0,
                 ReservedCar = car,
-                Email = reservation.Email,
-                DateFrom = reservation.DateFrom,
-                DateTo = reservation.DateTo
+                Email = email,
+                DateFrom = resDetails.UserDateFrom,
+                DateTo = resDetails.UserDateTo
             };
 
             //unitOfWork.ReservationRepository.Insert(newReservation);
             //unitOfWork.CarRepository.Update(car);
             //unitOfWork.Save();
 
-            var body = $"Dziękujemy za rezerwację auta. " +
-                       $"Szczegóły:" +
-                       $"Model: {newReservation.ReservedCar.Name}" +
-                       $"Data wypożyczenia: {newReservation.DateFrom} - {newReservation.DateTo}";
-
-            unitOfWork.EmailRepository.SendEmail(newReservation.Email, "Rezerwacja auta", newReservation);
+            unitOfWork.EmailRepository.SendEmail(newReservation.Email, "Rezerwacja auta", resDetails);
 
             return Ok(newReservation);
         }

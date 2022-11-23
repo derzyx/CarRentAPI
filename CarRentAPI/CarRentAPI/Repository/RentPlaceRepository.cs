@@ -1,15 +1,12 @@
-﻿using CarRentAPI.Data;
-using CarRentAPI.Models;
+﻿using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Interfaces;
 
 namespace CarRentAPI.Repository
 {
     public class RentPlaceRepository : IGenericBasicRepository<RentalPlace>, IRentPlaceRepository
     {
         private CarRentDbContext context;
-        public RentPlaceRepository()
-        {
-            context= new CarRentDbContext();
-        }
 
         public RentPlaceRepository(CarRentDbContext _context)
         {
@@ -33,7 +30,8 @@ namespace CarRentAPI.Repository
 
         public void Update(RentalPlace rentalPlace)
         {
-            context.Entry(rentalPlace).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.RentalPlaces.Update(rentalPlace);
+            //context.Entry(rentalPlace).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
 
         public void Delete(RentalPlace rentalPlaceId)
