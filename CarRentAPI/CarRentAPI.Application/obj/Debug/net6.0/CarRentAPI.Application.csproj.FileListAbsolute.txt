@@ -1,5 +1,15 @@
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Application.deps.json
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Application.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Application.pdb
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Domain.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Domain.pdb
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.csproj.AssemblyReference.cache
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.AssemblyInfoInputs.cache
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.AssemblyInfo.cs
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.csproj.CoreCompileInputs.cache
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.csproj.CopyComplete
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\refint\CarRentAPI.Application.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.pdb
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\ref\CarRentAPI.Application.dll

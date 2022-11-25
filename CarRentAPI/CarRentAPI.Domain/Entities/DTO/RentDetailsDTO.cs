@@ -3,6 +3,7 @@
     public class RentDetailsDTO
     {
         public Car Car { get; set; }
+        public UserInputDTO UserInput { get; set; }
         public string Location { get; set; }
         public float EndPrice { get; set; }
         public float FuelPrice { get; set; }
@@ -10,7 +11,6 @@
         public bool CanRent { get; set; }
         public string CanRentMessage { get; set; }
         public DateTime? ReservedUntil { get; set; }
-        public DateTime UserDateFrom { get; set; }
-        public DateTime UserDateTo { get; set;}
+        
     }
 }

@@ -26,7 +26,7 @@ namespace CarRentAPI.Repository
                        $"Szczegóły rezerwacji:<br>" +
                        $"Marka: <b>{resDetails.Car.Name}</b><br>" +
                        $"Klasa: <b>{resDetails.Car.PriceCategory.GetDisplayName()}</b><br>" +
-                       $"Data wypożyczenia: <b>{resDetails.UserDateFrom} - {resDetails.UserDateTo}</b><br>" +
+                       $"Data wypożyczenia: <b>{resDetails.UserInput.DateFrom} - {resDetails.UserInput.DateTo}</b><br>" +
                        $"<br>" +
                        $"Cena końcowa: <b>{resDetails.EndPrice}</b><br>" +
                        $"W tym:<br>" +

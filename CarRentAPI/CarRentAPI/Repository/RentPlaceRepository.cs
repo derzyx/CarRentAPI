@@ -4,7 +4,7 @@ using CarRentAPI.Domain.Interfaces;
 
 namespace CarRentAPI.Repository
 {
-    public class RentPlaceRepository : IGenericBasicRepository<RentalPlace>, IRentPlaceRepository
+    public class RentPlaceRepository : IGenericBasicRepository<RentalPlace>, IRentalPlaceRepository
     {
         private CarRentDbContext context;
 

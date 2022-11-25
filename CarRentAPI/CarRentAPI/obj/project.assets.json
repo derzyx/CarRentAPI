@@ -879,6 +879,19 @@
           }
         }
       },
+      "CarRentAPI.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CarRentAPI.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CarRentAPI.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarRentAPI.Application.dll": {}
+        }
+      },
       "CarRentAPI.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -893,9 +906,11 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CarRentAPI.Application": "1.0.0",
           "CarRentAPI.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "System.Configuration.ConfigurationManager": "6.0.0"
         },
         "compile": {
@@ -2228,6 +2243,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "CarRentAPI.Application/1.0.0": {
+      "type": "project",
+      "path": "../CarRentAPI.Application/CarRentAPI.Application.csproj",
+      "msbuildProject": "../CarRentAPI.Application/CarRentAPI.Application.csproj"
+    },
     "CarRentAPI.Domain/1.0.0": {
       "type": "project",
       "path": "../CarRentAPI.Domain/CarRentAPI.Domain.csproj",
@@ -2241,6 +2261,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "CarRentAPI.Application >= 1.0.0",
       "CarRentAPI.Domain >= 1.0.0",
       "CarRentAPI.Infrastructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
@@ -2278,6 +2299,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {
+              "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj"
+            },
             "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
               "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj"
             },

@@ -15,3 +15,5 @@ C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\obj\Debug\net6.0\CarRentAPI.Infrastructure.pdb
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\obj\Debug\net6.0\CarRentAPI.Infrastructure.genruntimeconfig.cache
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\obj\Debug\net6.0\ref\CarRentAPI.Infrastructure.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\bin\Debug\net6.0\CarRentAPI.Application.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\bin\Debug\net6.0\CarRentAPI.Application.pdb

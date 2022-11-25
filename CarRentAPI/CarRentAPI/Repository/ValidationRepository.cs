@@ -3,7 +3,7 @@ using CarRentAPI.Domain.Interfaces;
 
 namespace CarRentAPI.Repository
 {
-    public class ValidationRepository : IValidate
+    public class ValidationRepository : IValidationRepository
     {
         private string emailRegEx = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 

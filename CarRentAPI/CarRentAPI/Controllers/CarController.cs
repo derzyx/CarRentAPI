@@ -1,4 +1,6 @@
-﻿using CarRentAPI.Domain.Entities;
+﻿using CarRentAPI.Application.Interfaces;
+using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Entities.DTO;
 using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Repository;
 using Microsoft.AspNetCore.Http;
@@ -11,31 +13,45 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        private DbContextOptions<CarRentDbContext> configuration;
-        private UnitOfWork unitOfWork;
-        public CarController(DbContextOptions<CarRentDbContext> _configuration)
+        //private DbContextOptions<CarRentDbContext> configuration;
+        //private UnitOfWork unitOfWork;
+        //public CarController(DbContextOptions<CarRentDbContext> _configuration)
+        //{
+        //    configuration = _configuration;
+        //    unitOfWork = new UnitOfWork(new CarRentDbContext(configuration));
+        //}
+        private ICarService carService;
+        private UnitOfWork unitOfWork = new UnitOfWork();
+        public CarController(ICarService _carService)
         {
-            configuration = _configuration;
-            unitOfWork = new UnitOfWork(new CarRentDbContext(configuration));
+            
+            carService = _carService;
         }
+
 
         //private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext(configuration));
 
         [HttpGet("all")]
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
-            return unitOfWork.CarRepository.GetAll().ToList();
+            return carService.GetAll().ToList();
         }
 
-        [HttpPost("add")]
-        public ActionResult<Car> AddCar([FromQuery] Car car)
+        [HttpGet("id/{id}")]
+        public ActionResult<Car> GetCarById(int id)
         {
-            if (car == null) return BadRequest();
-
-            unitOfWork.CarRepository.Insert(car);
-            unitOfWork.Save();
-
-            return Ok(car);
+            return carService.GetById(id);
         }
+
+        //[HttpPost("add")]
+        //public ActionResult<Car> AddCar([FromQuery] Car car)
+        //{
+        //    if (car == null) return BadRequest();
+
+        //    unitOfWork.CarRepository.Insert(car);
+        //    unitOfWork.Save();
+
+        //    return Ok(car);
+        //}
     }
 }

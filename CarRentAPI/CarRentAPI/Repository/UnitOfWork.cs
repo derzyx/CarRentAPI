@@ -1,4 +1,5 @@
-﻿using CarRentAPI.Infrastructure.DbData;
+﻿using CarRentAPI.Application.Interfaces;
+using CarRentAPI.Infrastructure.DbData;
 
 namespace CarRentAPI.Repository
 {
@@ -9,11 +10,51 @@ namespace CarRentAPI.Repository
         private RentPlaceRepository rentPlaceRepository;
         private ReservationRepozytory reservationRepository;
 
+        //Db entities
+        private readonly ICarService carService;
+        private readonly IRentalPlaceService rentalPlaceService;
+        private readonly IReservationService reservationService;
+
+
+        private readonly IEmailService emailService;
+        private readonly IValidationService validationService;
+
+
         private ValidationRepository validationRepository;
         private EmailRepository emailRepository;
+
+        public UnitOfWork()
+        {
+
+        }
         public UnitOfWork(CarRentDbContext _context)
         {
             context = _context;
+        }
+
+        public ICarService CarService
+        {
+            get { return carService; }
+        }
+
+        public IRentalPlaceService RentalPlaceService
+        {
+            get { return rentalPlaceService; }
+        }
+
+        public IReservationService ReservationService
+        {
+            get { return reservationService; }
+        }
+
+        public IEmailService EmailService 
+        {
+            get { return emailService; }
+        }
+
+        public IValidationService ValidationService
+        {
+            get { return validationService; }
         }
 
         public CarRepository CarRepository
