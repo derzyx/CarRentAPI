@@ -1,9 +1,7 @@
 ﻿using CarRentAPI.Application.Interfaces;
-using CarRentAPI.Application.UnitOfWork;
 using CarRentAPI.Domain.Entities;
-using CarRentAPI.Domain.Entities.DTO;
+using CarRentAPI.Application.DTO;
 using CarRentAPI.Domain.Enums;
-using CarRentAPI.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Application.Services
 {
-    public class CarService : ICarService
+    public class CarService : ICarService, ICustomService<Car>
     {
-        private readonly ICarRepository carRepository;
-        private readonly IRentalPlaceRepository rentalPlaceRepository;
-        private readonly IReservationRepository reservationRepository;
+        private readonly ICustomService<Car> basicCarService;
+        private readonly IRentalPlaceService rentalPlaceBasicService;
+        private readonly IReservationService reservationBasicService;
         public CarService(
-            ICarRepository _carRepository, 
-            IRentalPlaceRepository _rentalPlaceRepository,
-            IReservationRepository _reservationRepository)
+            ICustomService<Car> _basicCarService,
+            IRentalPlaceService _rentalPlaceBasicService,
+            IReservationService _reservationBasicService)
         {
-            carRepository = _carRepository;
-            rentalPlaceRepository = _rentalPlaceRepository;
-            reservationRepository = _reservationRepository;
+            basicCarService = _basicCarService;
+            rentalPlaceBasicService = _rentalPlaceBasicService;
+            reservationBasicService = _reservationBasicService;
         }
 
 
@@ -37,37 +35,31 @@ namespace CarRentAPI.Application.Services
         private string cantRentPremiumMsg = "You cant rent premiun cars yet";
         private string isReservedMsg = "This car is reserved, you cant rent it";
 
-        public void Delete(Car entity)
-        {
-            carRepository.Delete(entity);
-        }
+
 
         public IEnumerable<Car> GetAll()
         {
-            //List<CarDTO> carsList = new List<CarDTO>();
-            //var cars = carRepository.GetAll();
-            //foreach(Car car in cars)
-            //{
-            //    carsList.Add(new CarDTO
-            //    {
-            //        Name = car.Name,
-            //        PriceCatName = car.PriceCatName,
-            //        RentalPlaceName = rentPlaceRepository.GetCarRentPlace(car.Id).City,
-            //        IsReserved = car.IsReserved
-            //    });
-            //}
-            //return carsList;
-            return carRepository.GetAll();
+            return basicCarService.GetAll();
         }
 
         public Car GetById(int entityId)
         {
-            return carRepository.GetById(entityId);
+            return basicCarService.GetById(entityId);
         }
 
         public void Insert(Car entity)
         {
-            carRepository.Insert(entity);
+            basicCarService.Insert(entity);
+        }
+
+        public void Update(Car entity)
+        {
+            basicCarService.Update(entity);
+        }
+
+        public void Delete(Car entity)
+        {
+            basicCarService.Delete(entity);
         }
 
         public RentDetailsDTO RentCost(Car car, UserInputDTO userInput)
@@ -75,7 +67,7 @@ namespace CarRentAPI.Application.Services
             DateTime? reservedUntil = null;
             string rentMsg = "";
 
-            var rentalPlace = rentalPlaceRepository.GetCarRentPlace(car.Id);
+            var rentalPlace = rentalPlaceBasicService.GetCarRentPlace(car.Id);
             var drivingExperiance = (DateTime.Today - userInput.DriverLicenseYear).Days / 365;
             var rentDays = userInput.DateTo.Subtract(userInput.DateFrom).Days;
             var priceMultiplier = priceMultipliers[(int)car.PriceCategory];
@@ -88,7 +80,7 @@ namespace CarRentAPI.Application.Services
             if (rentalPlace.Car.Count < 3) totalPrice *= smallCarNumberFee;
             if (car.IsReserved)
             {
-                reservedUntil = reservationRepository.GetByCarId(car.Id).DateTo;
+                reservedUntil = reservationBasicService.GetByCarId(car.Id).DateTo;
                 rentMsg = isReservedMsg;
             }
 
@@ -110,9 +102,5 @@ namespace CarRentAPI.Application.Services
             return details;
         }
 
-        public void Update(Car entity)
-        {
-            carRepository.Update(entity);
-        }
     }
 }

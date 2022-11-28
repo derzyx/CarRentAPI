@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zsQ6eNP8MoHjO6e8p0yvqZVPtCw90B1cChBoJ4AfEUo=",
+  "Source": "CarRentAPI.Infrastructure.RazorLibrary",
+  "BasePath": "_content/CarRentAPI.Infrastructure.RazorLibrary",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

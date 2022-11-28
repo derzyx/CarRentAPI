@@ -144,9 +144,6 @@
             "projectReferences": {
               "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {
                 "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj"
-              },
-              "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
-                "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj"
               }
             }
           }

@@ -1,4 +1,4 @@
-﻿using CarRentAPI.Domain.Entities.DTO;
+﻿using CarRentAPI.Application.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

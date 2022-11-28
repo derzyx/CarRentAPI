@@ -1,6 +1,6 @@
 using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Application.Services;
-using CarRentAPI.Domain.Interfaces;
+using CarRentAPI.Domain.Entities;
 using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,19 +18,17 @@ builder.Services.AddDbContext<CarRentDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("ConnString"))
     );
-builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<ICustomService<Car>, CarRepository>();
 builder.Services.AddScoped<ICarService, CarService>();
 
-builder.Services.AddScoped<IRentalPlaceRepository, RentalPlaceRepository>();
-builder.Services.AddScoped<IRentalPlaceService, RentalPlaceService>();
+builder.Services.AddScoped<ICustomService<RentalPlace>, RentalPlaceRepository>();
+builder.Services.AddScoped<IRentalPlaceService, RentalPlaceRepository>();
 
-builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
-builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<ICustomService<Reservation>, ReservationRepository>();
+builder.Services.AddScoped<IReservationService, ReservationRepository>();
 
-builder.Services.AddScoped<IEmailRepository, EmailRepository>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-builder.Services.AddScoped<IValidationRepository, ValidationRepository>();
 builder.Services.AddScoped<IValidationService, ValidationService>();
 
 var app = builder.Build();

@@ -1,6 +1,5 @@
 ﻿using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Domain.Entities;
-using CarRentAPI.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,42 +8,44 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Application.Services
 {
-    public class ReservationService : IReservationService
+    public class ReservationService : IReservationService, ICustomService<Reservation>
     {
-        private readonly IReservationRepository reservationRepository;
-        public ReservationService(IReservationRepository _reservationRepository)
+        private readonly IReservationService reservationService;
+        private readonly ICustomService<Reservation> reservationBasicService;
+        public ReservationService(IReservationService _reservationService, ICustomService<Reservation> _reservationBasicService)
         {
-            reservationRepository = _reservationRepository;
-        }
-
-        public void Delete(Reservation entity)
-        {
-            reservationRepository.Delete(entity);
+            reservationService = _reservationService;
+            reservationBasicService = _reservationBasicService;
         }
 
         public IEnumerable<Reservation> GetAll()
         {
-            return reservationRepository.GetAll();
-        }
-
-        public Reservation GetByCarId(int carId)
-        {
-            return reservationRepository.GetByCarId(carId);
+            return reservationBasicService.GetAll();
         }
 
         public Reservation GetById(int entityId)
         {
-            return reservationRepository.GetById(entityId);
+            return reservationBasicService.GetById(entityId);
         }
 
         public void Insert(Reservation entity)
         {
-            reservationRepository.Insert(entity);
+            reservationBasicService.Insert(entity);
         }
 
         public void Update(Reservation entity)
         {
-            reservationRepository.Update(entity);
+            reservationBasicService.Update(entity);
+        }
+
+        public void Delete(Reservation entity)
+        {
+            reservationBasicService.Delete(entity);
+        }
+
+        public Reservation GetByCarId(int carId)
+        {
+            return reservationService.GetByCarId(carId);
         }
     }
 }

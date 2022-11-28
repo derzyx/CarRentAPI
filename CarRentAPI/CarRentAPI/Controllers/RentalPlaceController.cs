@@ -1,6 +1,6 @@
-﻿using CarRentAPI.Domain.Entities;
+﻿using CarRentAPI.Application.Interfaces;
+using CarRentAPI.Domain.Entities;
 using CarRentAPI.Infrastructure.DbData;
-using CarRentAPI.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,21 +11,19 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class RentalPlaceController : ControllerBase
     {
+        private readonly IRentalPlaceService rentalPlaceService;
+        private readonly ICustomService<RentalPlace> rentalPlaceBasicService;
 
-        private DbContextOptions<CarRentDbContext> configuration;
-        private UnitOfWork unitOfWork;
-        public RentalPlaceController(DbContextOptions<CarRentDbContext> _configuration)
+        public RentalPlaceController(IRentalPlaceService _rentalPlaceService, ICustomService<RentalPlace> _rentalPlaceBasicService)
         {
-            configuration = _configuration;
-            unitOfWork = new UnitOfWork(new CarRentDbContext(configuration));
+            rentalPlaceService = _rentalPlaceService;
+            rentalPlaceBasicService = _rentalPlaceBasicService;
         }
-
-        //private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
 
         [HttpGet("all")]
         public ActionResult<IEnumerable<RentalPlace>> GetAllCars()
         {
-            return unitOfWork.RentPlaceRepository.GetAll().ToList();
+            return rentalPlaceBasicService.GetAll().ToList();
         }
 
         [HttpPost("add")]
@@ -33,8 +31,7 @@ namespace CarRentAPI.Controllers
         {
             if (rentalPlace == null) return BadRequest();
 
-            unitOfWork.RentPlaceRepository.Insert(rentalPlace);
-            unitOfWork.Save();
+            rentalPlaceBasicService.Insert(rentalPlace);
 
             return Ok(rentalPlace);
         }
@@ -44,7 +41,7 @@ namespace CarRentAPI.Controllers
         {
             if (carId <= 0) return BadRequest("Invalid car id");
 
-            RentalPlace rentalPlace = unitOfWork.RentPlaceRepository.GetCarRentPlace(carId);
+            RentalPlace rentalPlace = rentalPlaceService.GetCarRentPlace(carId);
             return Ok(rentalPlace);
         }
     }

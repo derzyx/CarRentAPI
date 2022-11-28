@@ -9,7 +9,6 @@
       "CarRentAPI.Infrastructure/1.0.0": {
         "dependencies": {
           "CarRentAPI.Application": "1.0.0",
-          "CarRentAPI.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",

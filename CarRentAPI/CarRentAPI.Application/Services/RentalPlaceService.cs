@@ -1,6 +1,5 @@
 ﻿using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Domain.Entities;
-using CarRentAPI.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,42 +8,45 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Application.Services
 {
-    public class RentalPlaceService : IRentalPlaceService
+    public class RentalPlaceService :IRentalPlaceService,  ICustomService<RentalPlace>
     {
-        private readonly IRentalPlaceRepository rentalPlaceRepository;
-        public RentalPlaceService(IRentalPlaceRepository _rentalPlaceRepository)
+        private readonly IRentalPlaceService rentalPlaceService;
+        private readonly ICustomService<RentalPlace> rentalPlaceBasicService;
+        public RentalPlaceService(IRentalPlaceService _rentalPlaceService, ICustomService<RentalPlace> _rentalPlaceBasicService)
         {
-            rentalPlaceRepository = _rentalPlaceRepository;
-        }
-
-        public void Delete(RentalPlace entity)
-        {
-            rentalPlaceRepository.Delete(entity);
+            rentalPlaceService = _rentalPlaceService;
+            rentalPlaceBasicService = _rentalPlaceBasicService;
         }
 
         public IEnumerable<RentalPlace> GetAll()
         {
-            return rentalPlaceRepository.GetAll();
+            return rentalPlaceBasicService.GetAll();
         }
 
         public RentalPlace GetById(int entityId)
         {
-            return rentalPlaceRepository.GetById(entityId);
-        }
-
-        public RentalPlace GetCarRentPlace(int carId)
-        {
-            return rentalPlaceRepository.GetCarRentPlace(carId);
+            return rentalPlaceBasicService.GetById(entityId);
         }
 
         public void Insert(RentalPlace entity)
         {
-            rentalPlaceRepository.Insert(entity);
+            rentalPlaceBasicService.Insert(entity);
         }
 
         public void Update(RentalPlace entity)
         {
-            rentalPlaceRepository.Update(entity);
+            rentalPlaceBasicService.Update(entity);
         }
+
+        public void Delete(RentalPlace entity)
+        {
+            rentalPlaceBasicService.Delete(entity);
+        }
+
+        public RentalPlace GetCarRentPlace(int carId)
+        {
+            return rentalPlaceService.GetCarRentPlace(carId);
+        }
+
     }
 }

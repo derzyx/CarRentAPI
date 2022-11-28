@@ -2027,7 +2027,6 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "CarRentAPI.Application >= 1.0.0",
-      "CarRentAPI.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.0",
@@ -2065,9 +2064,6 @@
           "projectReferences": {
             "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {
               "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj"
-            },
-            "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
-              "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj"
             }
           }
         }

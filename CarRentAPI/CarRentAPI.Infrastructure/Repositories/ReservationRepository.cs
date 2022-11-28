@@ -1,5 +1,5 @@
-﻿using CarRentAPI.Domain.Entities;
-using CarRentAPI.Domain.Interfaces;
+﻿using CarRentAPI.Application.Interfaces;
+using CarRentAPI.Domain.Entities;
 using CarRentAPI.Infrastructure.DbData;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Infrastructure.Repositories
 {
-    public class ReservationRepository : IReservationRepository
+    public class ReservationRepository : IReservationService, ICustomService<Reservation>
     {
         private readonly CarRentDbContext context;
 
@@ -18,19 +18,9 @@ namespace CarRentAPI.Infrastructure.Repositories
             context = _context;
         }
 
-        public void Delete(Reservation entity)
-        {
-            context.Reservations.Remove(entity);
-        }
-
         public IEnumerable<Reservation> GetAll()
         {
             return context.Reservations.ToList();
-        }
-
-        public Reservation GetByCarId(int carId)
-        {
-            return context.Reservations.Where(res => res.ReservedCar.Id == carId).FirstOrDefault();
         }
 
         public Reservation GetById(int entityId)
@@ -41,11 +31,24 @@ namespace CarRentAPI.Infrastructure.Repositories
         public void Insert(Reservation entity)
         {
             context.Reservations.Add(entity);
+            context.SaveChanges();
         }
 
         public void Update(Reservation entity)
         {
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.SaveChanges();
+        }
+
+        public void Delete(Reservation entity)
+        {
+            context.Reservations.Remove(entity);
+            context.SaveChanges();
+        }
+
+        public Reservation GetByCarId(int carId)
+        {
+            return context.Reservations.Where(res => res.ReservedCar.Id == carId).FirstOrDefault();
         }
     }
 }
