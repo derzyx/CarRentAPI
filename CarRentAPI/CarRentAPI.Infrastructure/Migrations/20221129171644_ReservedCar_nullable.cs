@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace CarRentAPI.OldMigrations
+namespace CarRentAPI.Infrastructure.Migrations
 {
-    public partial class CarDesignUpdate : Migration
+    public partial class ReservedCar_nullable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

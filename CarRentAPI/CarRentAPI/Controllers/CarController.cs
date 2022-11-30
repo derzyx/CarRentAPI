@@ -5,6 +5,7 @@ using CarRentAPI.Infrastructure.DbData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using CarRentAPI.Infrastructure.Repositories;
 
 namespace CarRentAPI.Controllers
 {
@@ -12,22 +13,19 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        private readonly ICustomService<Car> basicCarService;
-        public CarController(ICustomService<Car> _basicCarService)
-        { 
-            basicCarService = _basicCarService;
-        }
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
+        
 
         [HttpGet("all")]
         public ActionResult<IEnumerable<Car>> GetAllCars()
         {
-            return basicCarService.GetAll().ToList();
+            return unitOfWork.Cars.GetAll().ToList();
         }
 
         [HttpGet("id/{id}")]
-        public ActionResult<Car> GetCarById(int id)
+        public ActionResult<Car?> GetCarById(int id)
         {
-            return basicCarService.GetById(id);
+            return unitOfWork.Cars.GetById(id);
         }
 
         [HttpPost("add")]
@@ -35,7 +33,8 @@ namespace CarRentAPI.Controllers
         {
             if (car == null) return BadRequest();
 
-            basicCarService.Insert(car);
+            unitOfWork.Cars.Insert(car);
+            unitOfWork.Cars.Save();
 
             return Ok(car);
         }

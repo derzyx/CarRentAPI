@@ -100,7 +100,8 @@ namespace CarRentAPI.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_ReservedCarId",
                 table: "Reservations",
-                column: "ReservedCarId");
+                column: "ReservedCarId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

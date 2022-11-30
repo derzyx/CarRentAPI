@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRentAPI.Application.Interfaces
+namespace CarRentAPI.Domain.Interfaces
 {
-    public interface IRentalPlaceService
+    public interface IReservation
     {
-        RentalPlace GetCarRentPlace(int carId);
+        Reservation? GetByCarId(int carId);
     }
 }

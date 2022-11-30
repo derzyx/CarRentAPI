@@ -1,6 +1,7 @@
 ﻿using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Domain.Entities;
 using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,19 +12,13 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class RentalPlaceController : ControllerBase
     {
-        private readonly IRentalPlaceService rentalPlaceService;
-        private readonly ICustomService<RentalPlace> rentalPlaceBasicService;
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
-        public RentalPlaceController(IRentalPlaceService _rentalPlaceService, ICustomService<RentalPlace> _rentalPlaceBasicService)
-        {
-            rentalPlaceService = _rentalPlaceService;
-            rentalPlaceBasicService = _rentalPlaceBasicService;
-        }
 
         [HttpGet("all")]
         public ActionResult<IEnumerable<RentalPlace>> GetAllCars()
         {
-            return rentalPlaceBasicService.GetAll().ToList();
+            return unitOfWork.RentalPlaces.GetAll().ToList();
         }
 
         [HttpPost("add")]
@@ -31,7 +26,7 @@ namespace CarRentAPI.Controllers
         {
             if (rentalPlace == null) return BadRequest();
 
-            rentalPlaceBasicService.Insert(rentalPlace);
+            unitOfWork.RentalPlaces.Insert(rentalPlace);
 
             return Ok(rentalPlace);
         }
@@ -41,7 +36,8 @@ namespace CarRentAPI.Controllers
         {
             if (carId <= 0) return BadRequest("Invalid car id");
 
-            RentalPlace rentalPlace = rentalPlaceService.GetCarRentPlace(carId);
+            //RentalPlace rentalPlace = rentalPlaceService.GetCarRentPlace(carId);
+            RentalPlace rentalPlace = unitOfWork.RentalPlaces.GetCarRentPlace(carId);
             return Ok(rentalPlace);
         }
     }

@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTXlGZWF0dXJlXFBhZ2VzXFBhZ2UxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/mkrau/Documents/GitHub/CarRentAPI/CarRentAPI/CarRentAPI.Infrastructure.RazorLibrary/Views/Emails/MakeReservation/MakeReservation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxzXE1ha2VSZXNlcnZhdGlvblxNYWtlUmVzZXJ2YXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/mkrau/Documents/GitHub/CarRentAPI/CarRentAPI/CarRentAPI.Infrastructure.RazorLibrary/Views/Emails/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -2,6 +2,7 @@
 using CarRentAPI.Domain.Entities;
 using CarRentAPI.Application.DTO;
 using CarRentAPI.Domain.Enums;
+using CarRentAPI.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +11,14 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Application.Services
 {
-    public class CarService : ICarService, ICustomService<Car>
+    public class CarService : ICarService
     {
-        private readonly ICustomService<Car> basicCarService;
-        private readonly IRentalPlaceService rentalPlaceBasicService;
-        private readonly IReservationService reservationBasicService;
+        private readonly IRentalPlace rentalPlaceBasicService;
+        private readonly IReservation reservationBasicService;
         public CarService(
-            ICustomService<Car> _basicCarService,
-            IRentalPlaceService _rentalPlaceBasicService,
-            IReservationService _reservationBasicService)
+            IRentalPlace _rentalPlaceBasicService,
+            IReservation _reservationBasicService)
         {
-            basicCarService = _basicCarService;
             rentalPlaceBasicService = _rentalPlaceBasicService;
             reservationBasicService = _reservationBasicService;
         }
@@ -34,33 +32,6 @@ namespace CarRentAPI.Application.Services
         private string canRentMsg = "You can rent this car";
         private string cantRentPremiumMsg = "You cant rent premiun cars yet";
         private string isReservedMsg = "This car is reserved, you cant rent it";
-
-
-
-        public IEnumerable<Car> GetAll()
-        {
-            return basicCarService.GetAll();
-        }
-
-        public Car GetById(int entityId)
-        {
-            return basicCarService.GetById(entityId);
-        }
-
-        public void Insert(Car entity)
-        {
-            basicCarService.Insert(entity);
-        }
-
-        public void Update(Car entity)
-        {
-            basicCarService.Update(entity);
-        }
-
-        public void Delete(Car entity)
-        {
-            basicCarService.Delete(entity);
-        }
 
         public RentDetailsDTO RentCost(Car car, UserInputDTO userInput)
         {
@@ -101,6 +72,5 @@ namespace CarRentAPI.Application.Services
 
             return details;
         }
-
     }
 }

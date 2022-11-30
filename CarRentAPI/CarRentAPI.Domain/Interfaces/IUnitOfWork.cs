@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Application.Interfaces
 {
-    public interface ICustomService<T> where T : class
+    public interface IUnitOfWork
     {
-        IEnumerable<T> GetAll();
-        T GetById(int entityId);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        void Save();
     }
 }

@@ -5,6 +5,7 @@ using CarRentAPI.Domain.Entities;
 using CarRentAPI.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using CarRentAPI.Application.Interfaces;
+using CarRentAPI.Infrastructure.Repositories;
 
 namespace CarRentAPI.Controllers
 {
@@ -12,22 +13,17 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class RentCarsController : ControllerBase
     {
-        private readonly ICarService carService;
-        private readonly ICustomService<Car> carBasicService;
-        private readonly ICustomService<Reservation> reservationBasicService;
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
+        private readonly ICarService carService;
         private readonly IEmailService emailService;
         private readonly IValidationService validationService;
         public RentCarsController(
             ICarService _carService,
-            ICustomService<Car> _carBasicService,
-            ICustomService<Reservation> _reservationBasicService,
             IEmailService _emailService, 
             IValidationService _validationService)
         {
             carService = _carService;
-            carBasicService = _carBasicService;
-            reservationBasicService = _reservationBasicService;
             emailService = _emailService;
             validationService = _validationService;
         }
@@ -40,11 +36,12 @@ namespace CarRentAPI.Controllers
         public ActionResult<List<RentDetailsDTO>> CarsToRent([FromQuery] UserInputDTO input)
         {
 
-            var cars = carBasicService.GetAll();
+            var cars = unitOfWork.Cars.GetAll();
             List<RentDetailsDTO> carsToRent = new List<RentDetailsDTO>();
 
             foreach (Car car in cars)
             {
+                //var details = unitOfWork.Cars.RentCost(car, input);
                 var details = carService.RentCost(car, input);
                 carsToRent.Add(details);
             }
@@ -54,7 +51,7 @@ namespace CarRentAPI.Controllers
         [HttpPost("addreservation/{email}")]
         public ActionResult AddReservation(string email, RentDetailsDTO resDetails)
         {
-            var car = resDetails.Car;
+            var car = unitOfWork.Cars.GetById(resDetails.Car.Id);
             if (car == null) return BadRequest("Invalid car id");
             if (!resDetails.CanRent) return BadRequest("This car is already reserved");
 
@@ -68,15 +65,14 @@ namespace CarRentAPI.Controllers
 
             var newReservation = new Reservation
             {
-                Id = 0,
                 ReservedCar = car,
                 Email = email,
                 DateFrom = resDetails.UserInput.DateFrom,
                 DateTo = resDetails.UserInput.DateTo
             };
 
-            reservationBasicService.Insert(newReservation);
-            carBasicService.Update(car);
+            unitOfWork.Reservations.Insert(newReservation);
+            unitOfWork.Reservations.Save();
 
             emailService.SendEmail(newReservation.Email, "Rezerwacja auta", resDetails);
 

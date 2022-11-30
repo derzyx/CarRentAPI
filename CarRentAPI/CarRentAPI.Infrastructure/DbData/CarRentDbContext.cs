@@ -12,15 +12,15 @@ namespace CarRentAPI.Infrastructure.DbData
         public DbSet<Car> Cars { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-        public CarRentDbContext(DbContextOptions<CarRentDbContext> options) : base(options)
-        {
-
-        }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //public CarRentDbContext(DbContextOptions<CarRentDbContext> options) : base(options)
         //{
-        //    optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;Database=CarRentCalcDb;Trusted_Connection=true");
+
         //}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;Database=CarRentCalcDb;Trusted_Connection=true");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

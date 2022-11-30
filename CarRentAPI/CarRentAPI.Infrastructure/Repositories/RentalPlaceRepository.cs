@@ -1,6 +1,7 @@
-﻿using CarRentAPI.Application.Interfaces;
-using CarRentAPI.Domain.Entities;
+﻿using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Interfaces;
 using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Infrastructure.Repositories.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,46 +10,23 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Infrastructure.Repositories
 {
-    public class RentalPlaceRepository : IRentalPlaceService, ICustomService<RentalPlace>
+    public class RentalPlaceRepository : BasicDbOpsRepository<RentalPlace>, IRentalPlace
     {
         private readonly CarRentDbContext context;
-        public RentalPlaceRepository(CarRentDbContext _context)
+        public RentalPlaceRepository(CarRentDbContext _context) : base(_context)
         {
             context = _context;
         }
 
-        public IEnumerable<RentalPlace> GetAll()
+        public RentalPlace? GetCarRentPlace(int carId)
         {
-            return context.RentalPlaces.ToList();
-        }
-
-        public RentalPlace GetById(int entityId)
-        {
-            return context.RentalPlaces.Find(entityId);
-        }
-
-        public void Insert(RentalPlace entity)
-        {
-            context.RentalPlaces.Add(entity);
-            context.SaveChanges();
-        }
-
-        public void Update(RentalPlace entity)
-        {
-            context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-        }
-
-        public void Delete(RentalPlace entity)
-        {
-            context.RentalPlaces.Remove(entity);
-            context.SaveChanges();
-        }
-
-        public RentalPlace GetCarRentPlace(int carId)
-        {
-            int carRentPlaceId = context.Cars.Where(car => car.Id == carId).FirstOrDefault().RentalPlaceId;
-            return context.RentalPlaces.Where(place => place.Id == carRentPlaceId).FirstOrDefault();
+            int carRentPlaceId = 0;
+            var carRentPlace = context.Cars.Where(car => car.Id == carId).FirstOrDefault();
+            if (carRentPlace != null)
+            {
+                carRentPlaceId = carRentPlace.RentalPlaceId;
+            }
+            return context.RentalPlaces.FirstOrDefault(place => place.Id == carRentPlaceId);
         }
     }
 }

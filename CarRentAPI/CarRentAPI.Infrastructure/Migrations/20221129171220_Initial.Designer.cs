@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CarRentAPI.OldMigrations
+namespace CarRentAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(CarRentDbContext))]
-    [Migration("20221121142820_AddedDatesToReservationTable")]
-    partial class AddedDatesToReservationTable
+    [Migration("20221129171220_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace CarRentAPI.OldMigrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CarRentAPI.Models.Car", b =>
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.Car", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +120,7 @@ namespace CarRentAPI.OldMigrations
                         });
                 });
 
-            modelBuilder.Entity("CarRentAPI.Models.RentalPlace", b =>
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.RentalPlace", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,7 +154,7 @@ namespace CarRentAPI.OldMigrations
                         });
                 });
 
-            modelBuilder.Entity("CarRentAPI.Models.Reservation", b =>
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.Reservation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,32 +177,39 @@ namespace CarRentAPI.OldMigrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReservedCarId");
+                    b.HasIndex("ReservedCarId")
+                        .IsUnique();
 
                     b.ToTable("Reservations");
                 });
 
-            modelBuilder.Entity("CarRentAPI.Models.Car", b =>
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.Car", b =>
                 {
-                    b.HasOne("CarRentAPI.Models.RentalPlace", null)
+                    b.HasOne("CarRentAPI.Domain.Entities.RentalPlace", null)
                         .WithMany("Car")
                         .HasForeignKey("RentalPlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CarRentAPI.Models.Reservation", b =>
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.Reservation", b =>
                 {
-                    b.HasOne("CarRentAPI.Models.Car", "ReservedCar")
-                        .WithMany()
-                        .HasForeignKey("ReservedCarId")
+                    b.HasOne("CarRentAPI.Domain.Entities.Car", "ReservedCar")
+                        .WithOne("Reservation")
+                        .HasForeignKey("CarRentAPI.Domain.Entities.Reservation", "ReservedCarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ReservedCar");
                 });
 
-            modelBuilder.Entity("CarRentAPI.Models.RentalPlace", b =>
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.Car", b =>
+                {
+                    b.Navigation("Reservation")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.RentalPlace", b =>
                 {
                     b.Navigation("Car");
                 });
