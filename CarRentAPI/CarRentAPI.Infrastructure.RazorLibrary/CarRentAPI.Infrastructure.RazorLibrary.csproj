@@ -11,6 +11,10 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CarRentAPI.Application\CarRentAPI.Application.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

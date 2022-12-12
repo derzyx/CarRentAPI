@@ -2,6 +2,7 @@
 using CarRentAPI.Domain.Interfaces;
 using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Infrastructure.Repositories.Generic;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace CarRentAPI.Infrastructure.Repositories
 
         public Reservation? GetByCarId(int carId)
         {
-            return context.Reservations.FirstOrDefault(res => res.ReservedCar.Id == carId);
+            return context.Reservations.AsNoTracking().FirstOrDefault(res => res.ReservedCar.Id == carId);
         }
     }
 }

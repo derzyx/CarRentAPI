@@ -6,6 +6,7 @@ using CarRentAPI.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Infrastructure.Repositories;
+using CarRentAPI.EmailService;
 
 namespace CarRentAPI.Controllers
 {
@@ -16,11 +17,11 @@ namespace CarRentAPI.Controllers
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         private readonly ICarService carService;
-        private readonly IEmailService emailService;
+        private readonly IEmail emailService;
         private readonly IValidationService validationService;
         public RentCarsController(
             ICarService _carService,
-            IEmailService _emailService, 
+            IEmail _emailService, 
             IValidationService _validationService)
         {
             carService = _carService;
@@ -41,7 +42,6 @@ namespace CarRentAPI.Controllers
 
             foreach (Car car in cars)
             {
-                //var details = unitOfWork.Cars.RentCost(car, input);
                 var details = carService.RentCost(car, input);
                 carsToRent.Add(details);
             }
@@ -71,12 +71,14 @@ namespace CarRentAPI.Controllers
                 DateTo = resDetails.UserInput.DateTo
             };
 
-            unitOfWork.Reservations.Insert(newReservation);
-            unitOfWork.Reservations.Save();
+            //unitOfWork.Reservations.Insert(newReservation);
+            //unitOfWork.Reservations.Save();
 
-            emailService.SendEmail(newReservation.Email, "Rezerwacja auta", resDetails);
+            //emailService.SendEmail(newReservation.Email, "Rezerwacja auta", resDetails);
 
-            return Ok(newReservation);
+            emailService.SendReservationEmail(email, resDetails);
+
+            return Ok();
         }
     }
 }

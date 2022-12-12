@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentAPI.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentAPI.Application", "CarRentAPI.Application\CarRentAPI.Application.csproj", "{8887A7B0-A622-4101-80E9-7FF72C0315A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentAPI.Infrastructure.RazorLibrary", "CarRentAPI.Infrastructure.RazorLibrary\CarRentAPI.Infrastructure.RazorLibrary.csproj", "{FCEB6AD4-7D6B-4685-874C-C9FFA2AB6500}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentAPI.EmailService", "CarRentAPI.EmailService\CarRentAPI.EmailService.csproj", "{A90377F7-FF4D-4697-B6AB-D1FB88B4F869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{8887A7B0-A622-4101-80E9-7FF72C0315A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8887A7B0-A622-4101-80E9-7FF72C0315A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8887A7B0-A622-4101-80E9-7FF72C0315A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCEB6AD4-7D6B-4685-874C-C9FFA2AB6500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCEB6AD4-7D6B-4685-874C-C9FFA2AB6500}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCEB6AD4-7D6B-4685-874C-C9FFA2AB6500}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCEB6AD4-7D6B-4685-874C-C9FFA2AB6500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90377F7-FF4D-4697-B6AB-D1FB88B4F869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90377F7-FF4D-4697-B6AB-D1FB88B4F869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90377F7-FF4D-4697-B6AB-D1FB88B4F869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90377F7-FF4D-4697-B6AB-D1FB88B4F869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

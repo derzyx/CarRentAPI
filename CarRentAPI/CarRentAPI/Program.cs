@@ -2,8 +2,12 @@ using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Application.Services;
 using CarRentAPI.Domain.Entities;
 using CarRentAPI.Domain.Interfaces;
+using CarRentAPI.EmailService;
+using CarRentAPI.EmailService.RazorRenderer;
 using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Infrastructure.Repositories;
+using CarRentAPI.RazorViews;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,7 +37,9 @@ builder.Services.AddScoped<IRentalPlace, RentalPlaceRepository>();
 builder.Services.AddScoped<IGenericRepository<Reservation>, ReservationRepository>();
 builder.Services.AddScoped<IReservation, ReservationRepository>();
 
-builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IRenderRazorView, RenderRazorView>();
+builder.Services.AddScoped<IEmail, CarRentAPI.EmailService.EmailService>();
+
 
 builder.Services.AddScoped<IValidationService, ValidationService>();
 

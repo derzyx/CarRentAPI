@@ -20,3 +20,8 @@ C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\obj\Debug\net6.0\refint\CarRentAPI.Infrastructure.RazorLibrary.dll
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\obj\Debug\net6.0\CarRentAPI.Infrastructure.RazorLibrary.pdb
 C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\obj\Debug\net6.0\ref\CarRentAPI.Infrastructure.RazorLibrary.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\bin\Debug\net6.0\CarRentAPI.Application.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\bin\Debug\net6.0\CarRentAPI.Domain.dll
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\bin\Debug\net6.0\CarRentAPI.Application.pdb
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\bin\Debug\net6.0\CarRentAPI.Domain.pdb
+C:\Users\mkrau\Documents\GitHub\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure.RazorLibrary\obj\Debug\net6.0\CarRentAPI.Infrastructure.RazorLibrary.csproj.CopyComplete

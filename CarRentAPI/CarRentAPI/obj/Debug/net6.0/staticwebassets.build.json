@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "gGFdFDSjsHjVjz0kjaKJ9F8ZlPi3b8ir0/67nkcOQWo=",
+  "Hash": "PzakUbAgkzgbhCZE5okxOIwtiTN/pEd8GOidmqNfc5A=",
   "Source": "CarRentAPI",
   "BasePath": "_content/CarRentAPI",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.RazorViews\\CarRentAPI.RazorViews.csproj",
+      "Version": 2,
+      "Source": "CarRentAPI.RazorViews",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

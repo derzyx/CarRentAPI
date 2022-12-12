@@ -2,6 +2,7 @@
 using CarRentAPI.Domain.Interfaces;
 using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Infrastructure.Repositories.Generic;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,12 @@ namespace CarRentAPI.Infrastructure.Repositories
         public RentalPlace? GetCarRentPlace(int carId)
         {
             int carRentPlaceId = 0;
-            var carRentPlace = context.Cars.Where(car => car.Id == carId).FirstOrDefault();
+            var carRentPlace = context.Cars.AsNoTracking().Where(car => car.Id == carId).FirstOrDefault();
             if (carRentPlace != null)
             {
                 carRentPlaceId = carRentPlace.RentalPlaceId;
             }
-            return context.RentalPlaces.FirstOrDefault(place => place.Id == carRentPlaceId);
+            return context.RentalPlaces.AsNoTracking().FirstOrDefault(place => place.Id == carRentPlaceId);
         }
     }
 }
