@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using CarRentAPI.Application.Interfaces;
 using CarRentAPI.Infrastructure.Repositories;
 using CarRentAPI.EmailService;
+using CarRentAPI.Validation;
 
 namespace CarRentAPI.Controllers
 {
@@ -14,7 +15,11 @@ namespace CarRentAPI.Controllers
     [ApiController]
     public class RentCarsController : ControllerBase
     {
+        // Db access
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
+
+        UserInputValidator inputValidator = new UserInputValidator();
+        ReservationValidator reservationValidator = new ReservationValidator();
 
         private readonly ICarService carService;
         private readonly IEmail emailService;
@@ -36,49 +41,77 @@ namespace CarRentAPI.Controllers
         [HttpGet("getlist")]
         public ActionResult<List<RentDetailsDTO>> CarsToRent([FromQuery] UserInputDTO input)
         {
+            var valResult = inputValidator.Validate(input);
 
-            var cars = unitOfWork.Cars.GetAll();
-            List<RentDetailsDTO> carsToRent = new List<RentDetailsDTO>();
-
-            foreach (Car car in cars)
+            if (valResult.IsValid)
             {
-                var details = carService.RentCost(car, input);
-                carsToRent.Add(details);
+                var cars = unitOfWork.Cars.GetAll();
+                List<RentDetailsDTO> carsToRent = new List<RentDetailsDTO>();
+
+                foreach (Car car in cars)
+                {
+                    var details = carService.RentCost(car, input);
+                    carsToRent.Add(details);
+                }
+                return carsToRent;
             }
-            return carsToRent;
+            else
+            {
+                string errors = "";
+                foreach(var error in valResult.Errors)
+                {
+                    errors += " " + error + " ";
+                }
+                var details = new RentDetailsDTO { CanRentMessage = errors };
+                return new List<RentDetailsDTO> { details };
+            }
         }
 
         [HttpPost("addreservation/{email}")]
-        public ActionResult AddReservation(string email, RentDetailsDTO resDetails)
+        public async Task<ActionResult> AddReservationAsync(string email, RentDetailsDTO resDetails)
         {
-            var car = unitOfWork.Cars.GetById(resDetails.Car.Id);
-            if (car == null) return BadRequest("Invalid car id");
             if (!resDetails.CanRent) return BadRequest("This car is already reserved");
 
-            var isEmailValid = validationService.IsEmailValid(email);
-            if (!isEmailValid) return BadRequest("Invalid email address");
+            var car = unitOfWork.Cars.GetById(resDetails.Car.Id);
+            if (car == null) return BadRequest("Invalid car id");
 
-            var isDateSpanValid = validationService.IsDateSpanValid(resDetails.UserInput.DateFrom, resDetails.UserInput.DateTo);
-            if (!isDateSpanValid.IsValid) return BadRequest(isDateSpanValid.Message);
+            //var isEmailValid = validationService.IsEmailValid(email);
+            //if (!isEmailValid) return BadRequest("Invalid email address");
+
+            //var isDateSpanValid = validationService.IsDateSpanValid(resDetails.UserInput.DateFrom, resDetails.UserInput.DateTo);
+            //if (!isDateSpanValid.IsValid) return BadRequest(isDateSpanValid.Message);
 
             car.IsReserved = true;
 
             var newReservation = new Reservation
             {
+                ReservedCarId = car.Id,
                 ReservedCar = car,
                 Email = email,
                 DateFrom = resDetails.UserInput.DateFrom,
                 DateTo = resDetails.UserInput.DateTo
             };
 
-            //unitOfWork.Reservations.Insert(newReservation);
-            //unitOfWork.Reservations.Save();
+            var valResult = reservationValidator.Validate(newReservation);
 
-            //emailService.SendEmail(newReservation.Email, "Rezerwacja auta", resDetails);
+            if (valResult.IsValid)
+            {
+                //unitOfWork.Reservations.Insert(newReservation);
+                //unitOfWork.Reservations.Save();
 
-            emailService.SendReservationEmail(email, resDetails);
+                await emailService.SendReservationEmail(email, resDetails);
+                return Ok("Wysłano email");
+            }
+            else
+            {
+                var errors = "";
+                foreach (var error in valResult.Errors)
+                {
+                    errors += " " + error + " ";
+                }
+                return BadRequest(errors);
+            }
 
-            return Ok();
         }
     }
 }

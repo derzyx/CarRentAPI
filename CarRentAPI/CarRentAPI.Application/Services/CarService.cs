@@ -48,7 +48,7 @@ namespace CarRentAPI.Application.Services
             var totalPrice = (rentDays * rentalPlace.BasePrice * priceMultiplier) + fuelCost;
 
             if (drivingExperiance < 5) totalPrice *= newDriverFee;
-            if (rentalPlace.Car.Count < 3) totalPrice *= smallCarNumberFee;
+            if (rentalPlaceBasicService.GetCarsInRentalPlace(rentalPlace.Id).Count < 3) totalPrice *= smallCarNumberFee;
             if (car.IsReserved)
             {
                 reservedUntil = reservationBasicService.GetByCarId(car.Id).DateTo;

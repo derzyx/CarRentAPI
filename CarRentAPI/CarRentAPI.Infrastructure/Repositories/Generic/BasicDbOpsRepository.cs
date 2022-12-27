@@ -1,4 +1,4 @@
-﻿using CarRentAPI.Application.Interfaces;
+﻿using CarRentAPI.Domain.Interfaces;
 using CarRentAPI.Infrastructure.DbData;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -29,5 +29,10 @@ namespace CarRentAPI.Infrastructure.Repositories
             }
             return context.RentalPlaces.AsNoTracking().FirstOrDefault(place => place.Id == carRentPlaceId);
         }
+
+        public ICollection<Car> GetCarsInRentalPlace(int rentalPlaceId)
+        {
+            return context.Cars.Where(car => car.RentalPlaceId == rentalPlaceId).ToList();
+        }
     }
 }

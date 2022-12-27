@@ -33,6 +33,7 @@
     <ProjectReference Include="..\CarRentAPI.Domain\CarRentAPI.Domain.csproj" />
     <ProjectReference Include="..\CarRentAPI.EmailService\CarRentAPI.EmailService.csproj" />
     <ProjectReference Include="..\CarRentAPI.Infrastructure\CarRentAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\CarRentAPI.Validation\CarRentAPI.Validation.csproj" />
   </ItemGroup>
 
 </Project>

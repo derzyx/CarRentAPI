@@ -1,5 +1,4 @@
 ﻿using CarRentAPI.Application.DTO;
-using CarRentAPI.EmailService.RazorRenderer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using CarRentAPI.RazorTemplates.RazorRenderer;
+using MimeKit;
 
 namespace CarRentAPI.EmailService
 {
@@ -33,7 +34,15 @@ namespace CarRentAPI.EmailService
 
             subject = (subject == "") ? "Dziękujemy za rezerwację auta" : subject;
 
-            smtpClient.Send(SENDER_EMAIL, reciever, subject, emailBody);
+            var message = new MailMessage();
+
+            message.From = new MailAddress(SENDER_EMAIL);
+            message.To.Add(reciever);
+            message.Subject = subject;
+            message.Body = emailBody;
+            message.IsBodyHtml = true;         
+
+            smtpClient.Send(message);
 
         }
     }

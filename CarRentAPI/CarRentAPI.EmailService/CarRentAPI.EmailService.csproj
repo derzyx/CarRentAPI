@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+    <PackageReference Include="MimeKit" Version="3.4.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CarRentAPI.Application\CarRentAPI.Application.csproj" />
+    <ProjectReference Include="..\CarRentAPI.RazorTemplates\CarRentAPI.RazorTemplates.csproj" />
   </ItemGroup>
 
 </Project>

@@ -16,13 +16,13 @@ namespace CarRentAPI.Controllers
 
 
         [HttpGet("all")]
-        public ActionResult<IEnumerable<RentalPlace>> GetAllCars()
+        public ActionResult<IEnumerable<RentalPlace>> GetAllRentalPlaces()
         {
             return unitOfWork.RentalPlaces.GetAll().ToList();
         }
 
         [HttpPost("add")]
-        public ActionResult<RentalPlace> AddCar([FromQuery] RentalPlace rentalPlace)
+        public ActionResult<RentalPlace> AddRentalPlace([FromQuery] RentalPlace rentalPlace)
         {
             if (rentalPlace == null) return BadRequest();
 

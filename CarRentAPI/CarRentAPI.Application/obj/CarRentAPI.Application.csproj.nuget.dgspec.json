@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {}
+    "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {
+    "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj",
+        "projectUniqueName": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj",
         "projectName": "CarRentAPI.Application",
-        "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj",
+        "projectPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\CarRentAPI.Application.csproj",
         "packagesPath": "C:\\Users\\mkrau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\obj\\",
+        "outputPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mkrau\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
-                "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj"
+              "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
+                "projectPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj"
               }
             }
           }
@@ -49,8 +49,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -59,18 +58,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
+    "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj",
         "projectName": "CarRentAPI.Domain",
-        "projectPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj",
+        "projectPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\CarRentAPI.Domain.csproj",
         "packagesPath": "C:\\Users\\mkrau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\obj\\",
+        "outputPath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mkrau\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,8 +103,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -114,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

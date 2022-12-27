@@ -175,29 +175,37 @@ namespace CarRentAPI.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReservedCarId");
+                    b.HasIndex("ReservedCarId")
+                        .IsUnique();
 
                     b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("CarRentAPI.Domain.Entities.Car", b =>
                 {
-                    b.HasOne("CarRentAPI.Domain.Entities.RentalPlace", null)
+                    b.HasOne("CarRentAPI.Domain.Entities.RentalPlace", "RentalPlace")
                         .WithMany("Car")
                         .HasForeignKey("RentalPlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("RentalPlace");
                 });
 
             modelBuilder.Entity("CarRentAPI.Domain.Entities.Reservation", b =>
                 {
                     b.HasOne("CarRentAPI.Domain.Entities.Car", "ReservedCar")
-                        .WithMany()
-                        .HasForeignKey("ReservedCarId")
+                        .WithOne("Reservation")
+                        .HasForeignKey("CarRentAPI.Domain.Entities.Reservation", "ReservedCarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ReservedCar");
+                });
+
+            modelBuilder.Entity("CarRentAPI.Domain.Entities.Car", b =>
+                {
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("CarRentAPI.Domain.Entities.RentalPlace", b =>

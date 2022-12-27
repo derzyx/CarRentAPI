@@ -1,0 +1,17 @@
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Validation.deps.json
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Validation.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Validation.pdb
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Application.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Domain.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Application.pdb
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Domain.pdb
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.csproj.AssemblyReference.cache
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.AssemblyInfoInputs.cache
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.AssemblyInfo.cs
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.csproj.CoreCompileInputs.cache
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.csproj.CopyComplete
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\refint\CarRentAPI.Validation.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.pdb
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\ref\CarRentAPI.Validation.dll

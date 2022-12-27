@@ -3,10 +3,9 @@ using CarRentAPI.Application.Services;
 using CarRentAPI.Domain.Entities;
 using CarRentAPI.Domain.Interfaces;
 using CarRentAPI.EmailService;
-using CarRentAPI.EmailService.RazorRenderer;
 using CarRentAPI.Infrastructure.DbData;
 using CarRentAPI.Infrastructure.Repositories;
-using CarRentAPI.RazorViews;
+using CarRentAPI.RazorTemplates.RazorRenderer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,7 +37,7 @@ builder.Services.AddScoped<IGenericRepository<Reservation>, ReservationRepositor
 builder.Services.AddScoped<IReservation, ReservationRepository>();
 
 builder.Services.AddScoped<IRenderRazorView, RenderRazorView>();
-builder.Services.AddScoped<IEmail, CarRentAPI.EmailService.EmailService>();
+builder.Services.AddScoped<IEmail, EmailService>();
 
 
 builder.Services.AddScoped<IValidationService, ValidationService>();

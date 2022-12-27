@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "Hash": "PzakUbAgkzgbhCZE5okxOIwtiTN/pEd8GOidmqNfc5A=",
+  "Hash": "y16elBX5Y7TAkCa+EotgeV8oUl96mx6kuCSbMoBLsLI=",
   "Source": "CarRentAPI",
   "BasePath": "_content/CarRentAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\mkrau\\Documents\\GitHub\\CarRentAPI\\CarRentAPI\\CarRentAPI.RazorViews\\CarRentAPI.RazorViews.csproj",
+      "Identity": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.RazorTemplates\\CarRentAPI.RazorTemplates.csproj",
       "Version": 2,
-      "Source": "CarRentAPI.RazorViews",
+      "Source": "CarRentAPI.RazorTemplates",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
       "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
     }
   ],
   "DiscoveryPatterns": [],
