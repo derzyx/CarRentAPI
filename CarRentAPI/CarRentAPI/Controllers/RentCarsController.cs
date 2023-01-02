@@ -1,76 +1,117 @@
-﻿using CarRentAPI.Data;
-using CarRentAPI.Models;
-using CarRentAPI.Repository;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using CarRentAPI.Infrastructure.DbData;
+using CarRentAPI.Application.DTO;
+using CarRentAPI.Domain.Entities;
+using CarRentAPI.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
+using CarRentAPI.Application.Interfaces;
+using CarRentAPI.Infrastructure.Repositories;
+using CarRentAPI.EmailService;
+using CarRentAPI.Validation;
 
 namespace CarRentAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/rentcars")]
     [ApiController]
     public class RentCarsController : ControllerBase
     {
-        private static readonly float[] priceMultipliers = new[] { 1.0f, 1.3f, 1.6f, 2.0f };
-        private float fuelPrice = 7.21f;
-        private float newDriverFee = 1.2f;
-        private float smallCarNumberFee = 1.15f;
+        // Db access
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
-        private UnitOfWork unitOfWork = new UnitOfWork(new CarRentDbContext());
+        UserInputValidator inputValidator = new UserInputValidator();
+        ReservationValidator reservationValidator = new ReservationValidator();
 
-        //private ICarRepository carRepository;
-        //private IRentPlaceRepository rentPlaceRepository;
-        //public RentCarsController()
-        //{
-        //    carRepository = new CarRepository(new CarRentDbContext());
-        //    rentPlaceRepository = new RentPlaceRepository(new CarRentDbContext());
-        //}
-        //public RentCarsController(ICarRepository _carRepository, IRentPlaceRepository _rentPlaceRepository)
-        //{
-        //    carRepository = _carRepository;
-        //    rentPlaceRepository = _rentPlaceRepository;
-        //}
-        
-
-        [HttpGet("GetList")]
-        public ActionResult<List<RentDetails>> CarsToRent([FromQuery] UserInput input)
+        private readonly ICarService carService;
+        private readonly IEmail emailService;
+        private readonly IValidationService validationService;
+        public RentCarsController(
+            ICarService _carService,
+            IEmail _emailService, 
+            IValidationService _validationService)
         {
-            var cars = unitOfWork.CarRepository.GetAll().ToList();
-            List<RentDetails> carsToRent = new List<RentDetails>();
-
-            foreach (Car car in cars)
-            {
-                var rentPlace = unitOfWork.RentPlaceRepository.GetCarRentPlace(car.Id);
-
-                var drivingExperiance = (DateTime.Today - input.DriverLicenseYear).Days/365;
-                var rentDays = input.DateTo.Subtract(input.DateFrom).Days;
-                var priceMultiplier = priceMultipliers[(int)car.PriceCategory];
-                var isPremium = car.PriceCategory == PriceCategories.Premium ? true : false;
-
-                var fuelCost = ((input.Range * car.AvgFuelConsumption) / 100) * fuelPrice;
-                var totalPrice = (rentDays * rentPlace.BasePrice * priceMultiplier) + fuelCost;
-
-                if (drivingExperiance < 5) totalPrice *= newDriverFee;
-                if (rentPlace.Car.Count < 3) totalPrice *= smallCarNumberFee;
-
-                RentDetails details = new RentDetails
-                {
-                    Car = car,
-                    Location = rentPlace.City,
-                    EndPrice = totalPrice,
-                    FuelPrice = fuelCost,
-                    CanRent = (drivingExperiance < 3 && isPremium) ? "You cant rent premium cars yet" : "You can rent this car"
-                };
-
-                carsToRent.Add(details);
-            }
-
-            return carsToRent;
+            carService = _carService;
+            emailService = _emailService;
+            validationService = _validationService;
         }
 
-        //[HttpPost("CarReservation")]
-        //public void AddReservation()
-        //{
+        //user enters input data in form (date span, estimated range)
+        //server returns CarsToRent
+        //user selects car
+        //client posts to AddReservation (it takes date span from form)
+        [HttpGet("getlist")]
+        public ActionResult<List<RentDetailsDTO>> CarsToRent([FromQuery] UserInputDTO input)
+        {
+            var valResult = inputValidator.Validate(input);
 
-        //}
+            if (valResult.IsValid)
+            {
+                var cars = unitOfWork.Cars.GetAll();
+                List<RentDetailsDTO> carsToRent = new List<RentDetailsDTO>();
+
+                foreach (Car car in cars)
+                {
+                    var details = carService.RentCost(car, input);
+                    carsToRent.Add(details);
+                }
+                return carsToRent;
+            }
+            else
+            {
+                string errors = "";
+                foreach(var error in valResult.Errors)
+                {
+                    errors += " " + error + " ";
+                }
+                var details = new RentDetailsDTO { CanRentMessage = errors };
+                return new List<RentDetailsDTO> { details };
+            }
+        }
+
+        [HttpPost("addreservation/{email}")]
+        public async Task<ActionResult> AddReservationAsync(string email, RentDetailsDTO resDetails)
+        {
+            if (!resDetails.CanRent) return BadRequest("This car is already reserved");
+
+            var car = unitOfWork.Cars.GetById(resDetails.Car.Id);
+            if (car == null) return BadRequest("Invalid car id");
+
+            //var isEmailValid = validationService.IsEmailValid(email);
+            //if (!isEmailValid) return BadRequest("Invalid email address");
+
+            //var isDateSpanValid = validationService.IsDateSpanValid(resDetails.UserInput.DateFrom, resDetails.UserInput.DateTo);
+            //if (!isDateSpanValid.IsValid) return BadRequest(isDateSpanValid.Message);
+
+            car.IsReserved = true;
+
+            var newReservation = new Reservation
+            {
+                ReservedCarId = car.Id,
+                ReservedCar = car,
+                Email = email,
+                DateFrom = resDetails.UserInput.DateFrom,
+                DateTo = resDetails.UserInput.DateTo
+            };
+
+            var valResult = reservationValidator.Validate(newReservation);
+
+            if (valResult.IsValid)
+            {
+                //unitOfWork.Reservations.Insert(newReservation);
+                //unitOfWork.Reservations.Save();
+
+                await emailService.SendReservationEmail(email, resDetails);
+                return Ok("Wysłano email");
+            }
+            else
+            {
+                var errors = "";
+                foreach (var error in valResult.Errors)
+                {
+                    errors += " " + error + " ";
+                }
+                return BadRequest(errors);
+            }
+
+        }
     }
 }

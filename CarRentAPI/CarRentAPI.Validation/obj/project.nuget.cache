@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lsGK9u83OLpsEhjEfCzj4BKNWluwEAgf43lD/jKaAxKJM4o/0QPgx30hFUyIqR4Qr1vJuYLiYtRNgInFcDFOlg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mkrau\\source\\VS2022_repos\\CarRentAPI\\CarRentAPI\\CarRentAPI.Validation\\CarRentAPI.Validation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mkrau\\.nuget\\packages\\fluentvalidation\\11.4.0\\fluentvalidation.11.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
