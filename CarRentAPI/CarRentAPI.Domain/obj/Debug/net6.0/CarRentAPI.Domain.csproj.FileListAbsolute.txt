@@ -22,3 +22,6 @@ C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\obj\D
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\obj\Debug\net6.0\refint\CarRentAPI.Domain.dll
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\obj\Debug\net6.0\CarRentAPI.Domain.pdb
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\obj\Debug\net6.0\ref\CarRentAPI.Domain.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\bin\Debug\net6.0\CarRentAPI.Common.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\bin\Debug\net6.0\CarRentAPI.Common.pdb
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Domain\obj\Debug\net6.0\CarRentAPI.Domain.csproj.CopyComplete

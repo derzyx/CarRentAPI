@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentAPI.EmailService", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentAPI.Validation", "CarRentAPI.Validation\CarRentAPI.Validation.csproj", "{CF33CF39-D35C-453D-AEAC-1F0AB7BA5153}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentAPI.RazorTemplates", "CarRentAPI.RazorTemplates\CarRentAPI.RazorTemplates.csproj", "{BDF05838-CE1F-4B39-B298-F82C1F88F6C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentAPI.RazorTemplates", "CarRentAPI.RazorTemplates\CarRentAPI.RazorTemplates.csproj", "{BDF05838-CE1F-4B39-B298-F82C1F88F6C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentAPI.Common", "CarRentAPI.Common\CarRentAPI.Common.csproj", "{A3D8D2D9-E41F-4197-AD1F-B469FA65683A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BDF05838-CE1F-4B39-B298-F82C1F88F6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDF05838-CE1F-4B39-B298-F82C1F88F6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDF05838-CE1F-4B39-B298-F82C1F88F6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D8D2D9-E41F-4197-AD1F-B469FA65683A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D8D2D9-E41F-4197-AD1F-B469FA65683A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D8D2D9-E41F-4197-AD1F-B469FA65683A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D8D2D9-E41F-4197-AD1F-B469FA65683A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

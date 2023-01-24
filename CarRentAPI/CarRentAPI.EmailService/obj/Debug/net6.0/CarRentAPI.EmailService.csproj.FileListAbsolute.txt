@@ -36,3 +36,5 @@ C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.EmailService
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.EmailService\obj\Debug\net6.0\ref\CarRentAPI.EmailService.dll
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.EmailService\bin\Debug\net6.0\CarRentAPI.RazorTemplates.dll
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.EmailService\bin\Debug\net6.0\CarRentAPI.RazorTemplates.pdb
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.EmailService\bin\Debug\net6.0\CarRentAPI.Common.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.EmailService\bin\Debug\net6.0\CarRentAPI.Common.pdb

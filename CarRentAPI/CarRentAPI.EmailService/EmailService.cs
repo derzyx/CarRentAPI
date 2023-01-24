@@ -8,23 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using CarRentAPI.RazorTemplates.RazorRenderer;
 using MimeKit;
+using Microsoft.Extensions.Configuration;
+using System.Text.RegularExpressions;
+using CarRentAPI.EmailService.Exceptions;
 
 namespace CarRentAPI.EmailService
 {
     public class EmailService : IEmail
     {
-        private const string SENDER_EMAIL = "carrentalproject7@gmail.com";
+        private const string emailRegEx = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+
         private readonly IRenderRazorView renderRazorView;
-        public EmailService(IRenderRazorView _renderRazorView)
+        private readonly IConfiguration configuration;
+        public EmailService(IRenderRazorView _renderRazorView, IConfiguration _configuration)
         {
             renderRazorView = _renderRazorView;
+            configuration = _configuration;
         }
 
         public async Task SendReservationEmail(string reciever, RentDetailsDTO details, string? subject = "")
         {
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            ValidateRecieverEmail(reciever);
+
+            var smtpClient = new SmtpClient(configuration.GetSection("MailService").GetValue<String>("Server"), 587)
             {
-                Credentials = new NetworkCredential(SENDER_EMAIL, "dpdebrkbyorefpvf"),
+                Credentials = new NetworkCredential(
+                    configuration.GetSection("MailService").GetValue<String>("Sender"), 
+                    configuration.GetSection("MailService").GetValue<String>("Pass")
+                ),
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false
@@ -36,7 +47,7 @@ namespace CarRentAPI.EmailService
 
             var message = new MailMessage();
 
-            message.From = new MailAddress(SENDER_EMAIL);
+            message.From = new MailAddress(configuration.GetSection("MailService").GetValue<String>("Sender"));
             message.To.Add(reciever);
             message.Subject = subject;
             message.Body = emailBody;
@@ -44,6 +55,14 @@ namespace CarRentAPI.EmailService
 
             smtpClient.Send(message);
 
+        }
+
+        private static void ValidateRecieverEmail(string reciever)
+        {
+            if (!Regex.IsMatch(reciever, emailRegEx, RegexOptions.IgnoreCase))
+            {
+                throw new EmailAddressIsInvalidException(reciever);
+            }
         }
     }
 }

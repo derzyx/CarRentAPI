@@ -19,15 +19,16 @@ namespace CarRentAPI.Infrastructure.Repositories
             context = _context;
         }
 
-        public RentalPlace? GetCarRentPlace(int carId)
+        public int GetCarRentPlace(int carId)
         {
-            int carRentPlaceId = 0;
             var carRentPlace = context.Cars.AsNoTracking().Where(car => car.Id == carId).FirstOrDefault();
-            if (carRentPlace != null)
+            if (carRentPlace == null)
             {
-                carRentPlaceId = carRentPlace.RentalPlaceId;
+                return 0;
             }
-            return context.RentalPlaces.AsNoTracking().FirstOrDefault(place => place.Id == carRentPlaceId);
+            return carRentPlace.RentalPlaceId;
+
+
         }
 
         public ICollection<Car> GetCarsInRentalPlace(int rentalPlaceId)

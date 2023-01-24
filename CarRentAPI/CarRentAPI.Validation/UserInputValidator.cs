@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarRentAPI.Validation
 {
-    public class UserInputValidator: AbstractValidator<UserInputDTO>
+    public class UserInputValidator: AbstractValidator<RentRequestDTO>
     {
         public UserInputValidator()
         {

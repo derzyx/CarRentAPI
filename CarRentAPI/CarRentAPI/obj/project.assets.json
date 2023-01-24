@@ -2805,6 +2805,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CarRentAPI.Common": "1.0.0",
           "CarRentAPI.Domain": "1.0.0"
         },
         "compile": {
@@ -2814,9 +2815,22 @@
           "bin/placeholder/CarRentAPI.Application.dll": {}
         }
       },
+      "CarRentAPI.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/CarRentAPI.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarRentAPI.Common.dll": {}
+        }
+      },
       "CarRentAPI.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CarRentAPI.Common": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/CarRentAPI.Domain.dll": {}
         },
@@ -2829,6 +2843,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "CarRentAPI.Application": "1.0.0",
+          "CarRentAPI.Common": "1.0.0",
           "CarRentAPI.RazorTemplates": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor": "2.2.0",
           "MimeKit": "3.4.3"
@@ -8765,6 +8780,11 @@
       "type": "project",
       "path": "../CarRentAPI.Application/CarRentAPI.Application.csproj",
       "msbuildProject": "../CarRentAPI.Application/CarRentAPI.Application.csproj"
+    },
+    "CarRentAPI.Common/1.0.0": {
+      "type": "project",
+      "path": "../CarRentAPI.Common/CarRentAPI.Common.csproj",
+      "msbuildProject": "../CarRentAPI.Common/CarRentAPI.Common.csproj"
     },
     "CarRentAPI.Domain/1.0.0": {
       "type": "project",

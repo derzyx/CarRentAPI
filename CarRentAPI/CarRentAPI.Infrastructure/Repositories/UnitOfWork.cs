@@ -12,9 +12,9 @@ namespace CarRentAPI.Infrastructure.Repositories
     {
         private readonly CarRentDbContext context = new CarRentDbContext();
 
-        public CarRepository cars;
-        public RentalPlaceRepository rentalPlaces;
-        public ReservationRepository reservations;
+        private CarRepository cars;
+        private RentalPlaceRepository rentalPlaces;
+        private ReservationRepository reservations;
 
         public CarRepository Cars
         {

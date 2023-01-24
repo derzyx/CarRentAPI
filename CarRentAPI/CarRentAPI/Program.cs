@@ -39,9 +39,6 @@ builder.Services.AddScoped<IReservation, ReservationRepository>();
 builder.Services.AddScoped<IRenderRazorView, RenderRazorView>();
 builder.Services.AddScoped<IEmail, EmailService>();
 
-
-builder.Services.AddScoped<IValidationService, ValidationService>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

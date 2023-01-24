@@ -28,3 +28,5 @@ C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Application\
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\refint\CarRentAPI.Application.dll
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\CarRentAPI.Application.pdb
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Application\obj\Debug\net6.0\ref\CarRentAPI.Application.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Common.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Application\bin\Debug\net6.0\CarRentAPI.Common.pdb

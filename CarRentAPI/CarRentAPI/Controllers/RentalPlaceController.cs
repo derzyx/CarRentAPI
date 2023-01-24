@@ -36,8 +36,11 @@ namespace CarRentAPI.Controllers
         {
             if (carId <= 0) return BadRequest("Invalid car id");
 
-            //RentalPlace rentalPlace = rentalPlaceService.GetCarRentPlace(carId);
-            RentalPlace rentalPlace = unitOfWork.RentalPlaces.GetCarRentPlace(carId);
+            var rentalPlaceId = unitOfWork.RentalPlaces.GetCarRentPlace(carId);
+            RentalPlace? rentalPlace = unitOfWork.RentalPlaces.GetById(rentalPlaceId);
+
+            if (rentalPlace == null) return NotFound("Rental place not found");
+
             return Ok(rentalPlace);
         }
     }

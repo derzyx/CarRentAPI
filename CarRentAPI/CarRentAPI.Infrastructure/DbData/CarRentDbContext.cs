@@ -41,68 +41,68 @@ namespace CarRentAPI.Infrastructure.DbData
 
             modelBuilder.Entity<Car>().HasData(
                 new Car
-                {
-                    Id = 1,
-                    Name = "Audi",
-                    PriceCategory = PriceCategories.Premium,
-                    AvgFuelConsumption = 13.5f,
-                    RentalPlaceId = 1,
-                    IsReserved = false
-                },
+                (
+                    "Audi",
+                    PriceCategories.Premium,
+                    13.5f,
+                    1,
+                    false,
+                    1
+                ),
                 new Car
-                {
-                    Id = 2,
-                    Name = "Renault",
-                    PriceCategory = PriceCategories.Medium,
-                    AvgFuelConsumption = 10.7f,
-                    RentalPlaceId = 1,
-                    IsReserved = false
-                },
+                (
+                    "Renault",
+                    PriceCategories.Medium,
+                    10.7f,
+                    1,
+                    false,
+                    2
+                ),
                 new Car
-                {
-                    Id = 3,
-                    Name = "Fiat",
-                    PriceCategory = PriceCategories.Standard,
-                    AvgFuelConsumption = 9.1f,
-                    RentalPlaceId = 1,
-                    IsReserved = false
-                },
+                (
+                    "Fiat",
+                    PriceCategories.Standard,
+                    9.1f,
+                    1,
+                    false,
+                    3
+                ),
                 new Car
-                {
-                    Id = 4,
-                    Name = "Porshe",
-                    PriceCategory = PriceCategories.Premium,
-                    AvgFuelConsumption = 17.2f,
-                    RentalPlaceId = 2,
-                    IsReserved = false
-                },
+                (
+                    "Porshe",
+                    PriceCategories.Premium,
+                    17.2f,
+                    2,
+                    false,
+                    4
+                ),
                 new Car
-                {
-                    Id = 5,
-                    Name = "Kia",
-                    PriceCategory = PriceCategories.Basic,
-                    AvgFuelConsumption = 9.7f,
-                    RentalPlaceId = 2,
-                    IsReserved = false
-                },
+                (
+                    "Kia",
+                    PriceCategories.Basic,
+                    9.7f,
+                    2,
+                    false,
+                    5
+                ),
                 new Car
-                {
-                    Id = 6,
-                    Name = "Fiat",
-                    PriceCategory = PriceCategories.Standard,
-                    AvgFuelConsumption = 9.1f,
-                    RentalPlaceId = 2,
-                    IsReserved = false
-                },
+                (
+                    "Fiat",
+                    PriceCategories.Standard,
+                    9.1f,
+                    2,
+                    false,
+                    6
+                ),
                 new Car
-                {
-                    Id = 7,
-                    Name = "Ford",
-                    PriceCategory = PriceCategories.Medium,
-                    AvgFuelConsumption = 11.2f,
-                    RentalPlaceId = 2,
-                    IsReserved = false
-                }
+                (
+                    "Ford",
+                    PriceCategories.Medium,
+                    11.2f,
+                    2,
+                    false,
+                    7
+                )
             );
         }
 

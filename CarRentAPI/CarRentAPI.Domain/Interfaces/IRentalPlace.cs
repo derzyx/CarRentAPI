@@ -9,7 +9,7 @@ namespace CarRentAPI.Domain.Interfaces
 {
     public interface IRentalPlace
     {
-        public RentalPlace? GetCarRentPlace(int carId);
+        public int GetCarRentPlace(int carId);
 
         public ICollection<Car> GetCarsInRentalPlace(int rentalPlaceId);
     }

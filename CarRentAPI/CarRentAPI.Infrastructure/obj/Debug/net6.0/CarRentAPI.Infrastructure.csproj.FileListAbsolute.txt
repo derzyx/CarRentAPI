@@ -36,3 +36,5 @@ C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructu
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\obj\Debug\net6.0\CarRentAPI.Infrastructure.pdb
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\obj\Debug\net6.0\CarRentAPI.Infrastructure.genruntimeconfig.cache
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\obj\Debug\net6.0\ref\CarRentAPI.Infrastructure.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\bin\Debug\net6.0\CarRentAPI.Common.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Infrastructure\bin\Debug\net6.0\CarRentAPI.Common.pdb

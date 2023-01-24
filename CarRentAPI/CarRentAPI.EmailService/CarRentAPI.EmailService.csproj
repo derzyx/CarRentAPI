@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarRentAPI.Application\CarRentAPI.Application.csproj" />
+    <ProjectReference Include="..\CarRentAPI.Common\CarRentAPI.Common.csproj" />
     <ProjectReference Include="..\CarRentAPI.RazorTemplates\CarRentAPI.RazorTemplates.csproj" />
   </ItemGroup>
 

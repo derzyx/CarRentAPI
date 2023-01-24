@@ -20,3 +20,5 @@ C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.RazorTemplat
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.RazorTemplates\obj\Debug\net6.0\refint\CarRentAPI.RazorTemplates.dll
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.RazorTemplates\obj\Debug\net6.0\CarRentAPI.RazorTemplates.pdb
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.RazorTemplates\obj\Debug\net6.0\ref\CarRentAPI.RazorTemplates.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.RazorTemplates\bin\Debug\net6.0\CarRentAPI.Common.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.RazorTemplates\bin\Debug\net6.0\CarRentAPI.Common.pdb

@@ -17,7 +17,8 @@ namespace CarRentAPI.Application.Services
         private readonly IReservation reservationBasicService;
         public CarService(
             IRentalPlace _rentalPlaceBasicService,
-            IReservation _reservationBasicService)
+            IReservation _reservationBasicService,
+            IGenericRepository<RentalPlace> _rentalPlaceRepository)
         {
             rentalPlaceBasicService = _rentalPlaceBasicService;
             reservationBasicService = _reservationBasicService;
@@ -33,12 +34,12 @@ namespace CarRentAPI.Application.Services
         private string cantRentPremiumMsg = "You cant rent premiun cars yet";
         private string isReservedMsg = "This car is reserved, you cant rent it";
 
-        public RentDetailsDTO RentCost(Car car, UserInputDTO userInput)
+        public RentDetailsDTO RentCost(Car car, RentRequest userInput)
         {
             DateTime? reservedUntil = null;
             string rentMsg = "";
 
-            var rentalPlace = rentalPlaceBasicService.GetCarRentPlace(car.Id);
+            var rentalPlace = car.RentalPlace;
             var drivingExperiance = (DateTime.Today - userInput.DriverLicenseYear).Days / 365;
             var rentDays = userInput.DateTo.Subtract(userInput.DateFrom).Days;
             var priceMultiplier = priceMultipliers[(int)car.PriceCategory];

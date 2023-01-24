@@ -5,7 +5,7 @@ namespace CarRentAPI.Application.DTO
     public class RentDetailsDTO
     {
         public Car Car { get; set; }
-        public UserInputDTO UserInput { get; set; }
+        public RentRequest UserInput { get; set; }
         public string Location { get; set; }
         public float EndPrice { get; set; }
         public float FuelPrice { get; set; }

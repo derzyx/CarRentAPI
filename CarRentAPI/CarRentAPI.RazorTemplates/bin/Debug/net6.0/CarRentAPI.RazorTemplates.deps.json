@@ -16,13 +16,22 @@
       },
       "CarRentAPI.Application/1.0.0": {
         "dependencies": {
+          "CarRentAPI.Common": "1.0.0",
           "CarRentAPI.Domain": "1.0.0"
         },
         "runtime": {
           "CarRentAPI.Application.dll": {}
         }
       },
+      "CarRentAPI.Common/1.0.0": {
+        "runtime": {
+          "CarRentAPI.Common.dll": {}
+        }
+      },
       "CarRentAPI.Domain/1.0.0": {
+        "dependencies": {
+          "CarRentAPI.Common": "1.0.0"
+        },
         "runtime": {
           "CarRentAPI.Domain.dll": {}
         }
@@ -36,6 +45,11 @@
       "sha512": ""
     },
     "CarRentAPI.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarRentAPI.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

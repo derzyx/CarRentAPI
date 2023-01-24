@@ -10,6 +10,6 @@ namespace CarRentAPI.Application.Interfaces
 {
     public interface ICarService
     {
-        RentDetailsDTO RentCost(Car car, UserInputDTO userInput);
+        RentDetailsDTO RentCost(Car car, RentRequest userInput);
     }
 }

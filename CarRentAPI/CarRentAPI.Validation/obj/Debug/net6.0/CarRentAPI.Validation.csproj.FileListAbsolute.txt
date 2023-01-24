@@ -15,3 +15,5 @@ C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\o
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\refint\CarRentAPI.Validation.dll
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\CarRentAPI.Validation.pdb
 C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\obj\Debug\net6.0\ref\CarRentAPI.Validation.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Common.dll
+C:\Users\mkrau\source\VS2022_repos\CarRentAPI\CarRentAPI\CarRentAPI.Validation\bin\Debug\net6.0\CarRentAPI.Common.pdb
