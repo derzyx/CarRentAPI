@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CarRentAPI.Domain/1.0.0": {
+        "dependencies": {
+          "CarRentAPI.Common": "1.0.0"
+        },
+        "runtime": {
+          "CarRentAPI.Domain.dll": {}
+        }
+      },
+      "CarRentAPI.Common/1.0.0": {
+        "runtime": {
+          "CarRentAPI.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CarRentAPI.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarRentAPI.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
